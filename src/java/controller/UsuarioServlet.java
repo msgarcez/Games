@@ -43,7 +43,7 @@ public class UsuarioServlet extends HttpServlet {
             usuario.setEmail(request.getParameter("email"));
             usuario.setAdmin(request.getParameter("admin"));
             udao.inserir(usuario);
-            rd = request.getRequestDispatcher("Cadastro_User.jsp");
+            rd = request.getRequestDispatcher("index.html");
             rd.forward(request, response);
         }
     }

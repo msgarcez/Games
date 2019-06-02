@@ -26,14 +26,14 @@ public class UsuarioDAO {
     //método para INSERIR um novo cliente
     public void inserir(UsuarioBean usuario) {
         try {
-           PreparedStatement ps = conexao.prepareStatement("insert into usuario (id, nome_usuario, senha, nome, email, admin) values (?,?,?,?,?,?)");             
+           PreparedStatement ps = conexao.prepareStatement("insert into usuario (nome_usuario, senha, nome, email, administrador) values (?,?,?,?,?)");             
             ps.setString(1, usuario.getNome_usuario());
             ps.setString(2, usuario.getSenha());
             ps.setString(3, usuario.getNome());
             ps.setString(4, usuario.getEmail());
             ps.setString(5, usuario.getAdmin());
-            ps.setInt(6, usuario.getId());
             ps.execute();
+            ps.close();
         } catch (Exception e) {
             System.out.println("erro:" +e.getMessage());
         }

@@ -31,7 +31,7 @@ public class UsuarioDAO {
             ps.setString(2, usuario.getSenha());
             ps.setString(3, usuario.getNome());
             ps.setString(4, usuario.getEmail());
-            ps.setString(5, usuario.getAdmin());
+            ps.setBoolean(5, usuario.getAdmin());
             ps.execute();
         } catch (Exception e) {
             System.out.println("erro:" +e.getMessage());

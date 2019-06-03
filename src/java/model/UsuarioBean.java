@@ -15,9 +15,9 @@ public class UsuarioBean {
     private String senha;
     private String nome;
     private String email;
-    private String admin;
+    private Boolean admin;
 
-    public UsuarioBean(String nome_usuario, String senha, String nome, String email, String admin) {
+    public UsuarioBean(String nome_usuario, String senha, String nome, String email, Boolean admin) {
         this.nome_usuario = nome_usuario;
         this.senha = senha;
         this.nome = nome;
@@ -71,11 +71,11 @@ public class UsuarioBean {
         this.email = email;
     }
 
-    public String getAdmin() {
+    public Boolean getAdmin() {
         return admin;
     }
 
-    public void setAdmin(String admin) {
+    public void setAdmin(Boolean admin) {
         this.admin = admin;
     }
     

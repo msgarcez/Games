@@ -11,6 +11,11 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <a href="Cadastro_User.jsp">Cadastra-se</a>
+        <h2>Logar</h2>
+        <form method="post" action="UserServlet?acao=logar">
+            Login: <input type="text" name="nome_usuario"><br><br>
+            Senha: <input type="password" name="senha"><br><br>
+            <input type="submit" value="Logar">
+        </form>
     </body>
 </html>

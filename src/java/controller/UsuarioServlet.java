@@ -47,6 +47,17 @@ public class UsuarioServlet extends HttpServlet {
             rd = request.getRequestDispatcher("index.html");
             rd.forward(request, response);
         }
+        if(acao.equalsIgnoreCase("logar")){
+            UsuarioBean usuario = new UsuarioBean();
+            usuario.setNome_usuario(request.getParameter("nome_usuario"));
+            usuario.setSenha(request.getParameter("senha"));
+            if(udao.consultarLogin(usuario)){
+                session.setAttribute("nome_usuario", request.getParameter("numero_usuario"));
+                response.sendRedirect("index.html");
+            }else{
+                response.sendRedirect("index.html");
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

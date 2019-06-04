@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.UsuarioBean;
 
 /**
@@ -35,6 +36,7 @@ public class UsuarioServlet extends HttpServlet {
         String acao = request.getParameter("acao");
         UsuarioDAO udao = new UsuarioDAO();
         RequestDispatcher rd = null;
+        HttpSession session = request.getSession();
         if(acao.equalsIgnoreCase("inserir")){
             UsuarioBean usuario = new UsuarioBean();
             usuario.setNome_usuario(request.getParameter("nome_usuario"));

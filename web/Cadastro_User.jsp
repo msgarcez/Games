@@ -18,7 +18,6 @@
         Senha: <input type="text" name="senha"><br>
         Nome: <input type="text" name="nome"><br>
         Email: <input type="text" name="email"><br>
-        Admin: <input type="text" name="admin"><br>
         <input type = "submit" value = "Salvar">
         </form>
     </body>

@@ -41,7 +41,6 @@ public class UsuarioServlet extends HttpServlet {
             usuario.setSenha(request.getParameter("senha"));
             usuario.setNome(request.getParameter("nome"));
             usuario.setEmail(request.getParameter("email"));
-            usuario.setAdmin(request.getParameter(""));
             udao.inserir(usuario);
             rd = request.getRequestDispatcher("index.html");
             rd.forward(request, response);

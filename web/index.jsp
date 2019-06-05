@@ -43,7 +43,7 @@
                                 <div class="card-content">
                                     <div class="divider"></div>
                                     <h5 class="black-text"><%=produto.getNome()%></h5>
-                                    <h6 class="black-text"><%= String.format("R$ %, .2f%", produto.getPreco()).replace(",", ".")%></h6>
+                                    <h6 class="black-text"><%= String.format("R$ %, .2f%",produto.getPreco()).replace(",", ".")%></h6>
                                     <h5 class="black-text"><%=produto.getId_categoria()%></h5>
                                     <h5 class="black-text"><%=produto.getEspecificacao()%></h5>
                                     <small class="black-text"><%=produto.getEstoque()%>Produtos no estoque</small>

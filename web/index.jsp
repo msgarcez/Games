@@ -4,6 +4,8 @@
     Author     : danie
 --%>
 
+<%@page import="model.UsuarioBean"%>
+<%@page import="dao.UsuarioDAO"%>
 <%@page import="dao.ProdutoDAO"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
@@ -22,9 +24,23 @@
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">
-            <div class="nav-wrapper container"><a href="index.jsp">Bem Vindo</a>
+            <div class="nav-wrapper container">
+                <a href="index.jsp">Bem Vindo</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="Logar.jsp">Login</a></li>
+                    <%
+                        if(session.getAttribute("usuario") != null){
+                            UsuarioBean usuario = new UsuarioBean();
+                            usuario = (UsuarioBean) session.getAttribute("usuario");
+                    %>
+                    <li><a href="index.jsp"><%=usuario.getNome_usuario()%></a></li>
+                        <%
+                            if(usuario.getAdmin()){
+                        %>
+                    <li><a href="administrativa.jsp">Área administrativa</a></li>
+                        <%
+                            }}
+                        %>
                 </ul>
             </div>
         </nav>
@@ -33,8 +49,7 @@
             <div class="section">
                 <!--   Icon Section   -->
                 <div class="row">
-                    <%
-                        ProdutoDAO pdao = new ProdutoDAO();
+                    <%                        ProdutoDAO pdao = new ProdutoDAO();
                         List<ProdutoBean> produtos = pdao.todosProdutos();
                         for (ProdutoBean produto : produtos) {%>
                     <div class="col s3">
@@ -43,10 +58,10 @@
                                 <div class="card-content">
                                     <div class="divider"></div>
                                     <h5 class="black-text"><%=produto.getNome()%></h5>
-                                    <h6 class="black-text"><%=produto.getPreco()%></h6>
+                                    <h6 class="black-text"><%= String.format("R$ %, .2f", produto.getPreco()).replace(",", ".")%></h6>
                                     <h5 class="black-text"><%=produto.getId_categoria()%></h5>
                                     <h5 class="black-text"><%=produto.getEspecificacao()%></h5>
-                                    <small class="black-text"><%=produto.getEstoque()%>Produtos no estoque</small>
+                                    <small class="black-text"><%=produto.getEstoque()%> Produtos no estoque</small>
                                 </div>
                             </a>
                         </div>
@@ -58,11 +73,11 @@
             </div><br><br>
         </div>
 
-        <footer class="page-footer orange">
+        <footer class="page-footer light-blue lighten-1">
             <div class="container">
                 <div class="row">
                     <div class="col l6 s12">
-                        <h5 class="white-text">Company Bio</h5>
+                        <h5 class="white-text">Center Games</h5>
                         <p class="grey-text text-lighten-4"></p>
 
 
@@ -89,7 +104,7 @@
             </div>
             <div class="footer-copyright">
                 <div class="container">
-                    Made by <p class="orange-text text-lighten-3">Daniel Rocha Limana & Matheus dos Santos Garcez</p>
+                    Made by <p>Daniel Rocha Limana & Matheus dos Santos Garcez</p>
                 </div>
             </div>
         </footer>

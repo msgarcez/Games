@@ -44,7 +44,7 @@ public class UsuarioServlet extends HttpServlet {
             usuario.setNome(request.getParameter("nome"));
             usuario.setEmail(request.getParameter("email"));
             udao.inserir(usuario);
-            rd = request.getRequestDispatcher("index.html");
+            rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
         if(acao.equalsIgnoreCase("logar")){
@@ -53,7 +53,7 @@ public class UsuarioServlet extends HttpServlet {
             usuario.setSenha(request.getParameter("senha"));
             if(udao.consultarLogin(usuario)){
                 System.out.println("teste 1");
-                session.setAttribute("nome_usuario", request.getParameter("nome_usuario"));
+                session.setAttribute("usuario", request.getParameter("nome_usuario"));
                 response.sendRedirect("index.jsp");
             }else{
                 response.sendRedirect("Logar.jsp");

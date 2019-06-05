@@ -41,7 +41,7 @@ public class ProdutoServlet extends HttpServlet {
         ProdutoDAO pdao = new ProdutoDAO();
         RequestDispatcher rd = null;
         HttpSession session = null;
-        if(acao.equalsIgnoreCase("produto")){
+        if (acao.equalsIgnoreCase("produto")) {
             ProdutoBean produto = new ProdutoBean();
             produto.setNome(request.getParameter("nome"));
             produto.setPreco(Double.parseDouble(request.getParameter("preco")));
@@ -52,20 +52,21 @@ public class ProdutoServlet extends HttpServlet {
             rd = request.getRequestDispatcher("index.html");
             rd.forward(request, response);
         }
-        if(acao.equalsIgnoreCase("listar")){
+        if (acao.equalsIgnoreCase("listar")) {
             List listaDeClientes = pdao.todosProdutos();
             rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
-        if(acao.equalsIgnoreCase("verProduto")){
+        if (acao.equalsIgnoreCase("verProduto")) {
             int id = Integer.parseInt(request.getParameter("id"));
             //ProdutoBean produto = pdao.selecionaPorId(id);
             //session.setAttribute("produto", produto);
-            if(session.getAttribute("usuario") == null){
+            if (session.getAttribute("usuario") == null) {
                 session.setAttribute("msg", "Você preicsa estar logado para adicionar ao carrinho");
+            } else {
+                rd = request.getRequestDispatcher("index.jsp");
+                rd.forward(request, response);
             }
-            rd = request.getRequestDispatcher("index.jsp");
-            rd.forward(request, response);
         }
     }
 

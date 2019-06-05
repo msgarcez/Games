@@ -17,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.ProdutoBean;
 
 /**
@@ -39,6 +40,7 @@ public class ProdutoServlet extends HttpServlet {
         String acao = request.getParameter("acao");
         ProdutoDAO pdao = new ProdutoDAO();
         RequestDispatcher rd = null;
+        HttpSession session = null;
         if(acao.equalsIgnoreCase("produto")){
             ProdutoBean produto = new ProdutoBean();
             produto.setNome(request.getParameter("nome"));
@@ -51,7 +53,17 @@ public class ProdutoServlet extends HttpServlet {
             rd.forward(request, response);
         }
         if(acao.equalsIgnoreCase("listar")){
-            List listaDeClientes = pdao.todosClientes();
+            List listaDeClientes = pdao.todosProdutos();
+            rd = request.getRequestDispatcher("index.jsp");
+            rd.forward(request, response);
+        }
+        if(acao.equalsIgnoreCase("verProduto")){
+            int id = Integer.parseInt(request.getParameter("id"));
+            //ProdutoBean produto = pdao.selecionaPorId(id);
+            //session.setAttribute("produto", produto);
+            if(session.getAttribute("usuario") == null){
+                session.setAttribute("msg", "Você preicsa estar logado para adicionar ao carrinho");
+            }
             rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }

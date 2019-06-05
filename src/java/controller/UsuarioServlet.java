@@ -52,10 +52,11 @@ public class UsuarioServlet extends HttpServlet {
             usuario.setNome_usuario(request.getParameter("nome_usuario"));
             usuario.setSenha(request.getParameter("senha"));
             if(udao.consultarLogin(usuario)){
-                session.setAttribute("nome_usuario", request.getParameter("numero_usuario"));
-                response.sendRedirect("index.html");
+                System.out.println("teste 1");
+                session.setAttribute("nome_usuario", request.getParameter("nome_usuario"));
+                response.sendRedirect("index.jsp");
             }else{
-                response.sendRedirect("index.html");
+                response.sendRedirect("Logar.jsp");
             }
         }
     }

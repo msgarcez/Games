@@ -44,7 +44,7 @@ public class ProdutoDAO {
         }
     }
     //método para LISTAR todos os cliente cadastrados
-    public List todosClientes()throws SQLException{
+    public List todosProdutos()throws SQLException{
         try {
             //criar o ps prepared stattment
             PreparedStatement ps = conexao.prepareStatement("Select * from produto");

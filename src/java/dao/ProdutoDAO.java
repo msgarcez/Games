@@ -58,7 +58,7 @@ public class ProdutoDAO {
             produto.setId(rs.getInt("id"));
             produto.setNome(rs.getString("nome"));
             produto.setPreco(rs.getDouble("preco"));
-            produto.setId_categoria(rs.getInt("id_categoria"));
+            produto.setId_categoria(rs.getInt("categoria"));
             produto.setEspecificacao(rs.getString("especificacao"));
             produto.setEstoque(rs.getInt("estoque"));
             

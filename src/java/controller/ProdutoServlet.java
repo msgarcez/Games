@@ -8,6 +8,10 @@ package controller;
 import dao.ProdutoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +35,7 @@ public class ProdutoServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         String acao = request.getParameter("acao");
         ProdutoDAO pdao = new ProdutoDAO();
         RequestDispatcher rd = null;
@@ -44,6 +48,11 @@ public class ProdutoServlet extends HttpServlet {
             produto.setEstoque(Integer.parseInt(request.getParameter("estoque")));
             pdao.inserir(produto);
             rd = request.getRequestDispatcher("index.html");
+            rd.forward(request, response);
+        }
+        if(acao.equalsIgnoreCase("listar")){
+            List listaDeClientes = pdao.todosClientes();
+            rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
     }
@@ -60,7 +69,11 @@ public class ProdutoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -74,7 +87,11 @@ public class ProdutoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

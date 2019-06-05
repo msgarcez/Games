@@ -28,18 +28,19 @@
                 <a href="index.jsp">Bem Vindo</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="Logar.jsp">Login</a></li>
-                    <%
-                        if(session.getAttribute("usuario") != null){
-                            UsuarioBean usuario = new UsuarioBean();
-                            usuario = (UsuarioBean) session.getAttribute("usuario");
-                    %>
+                        <%
+                            if (session.getAttribute("usuario") != null) {
+                                UsuarioBean usuario = new UsuarioBean();
+                                usuario = (UsuarioBean) session.getAttribute("usuario");
+                        %>
                     <li><a href="index.jsp"><%=usuario.getNome_usuario()%></a></li>
                         <%
-                            if(usuario.getAdmin()){
+                            if (usuario.getAdmin()) {
                         %>
                     <li><a href="administrativa.jsp">Área administrativa</a></li>
                         <%
-                            }}
+                                }
+                            }
                         %>
                 </ul>
             </div>

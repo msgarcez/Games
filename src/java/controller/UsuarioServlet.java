@@ -51,9 +51,9 @@ public class UsuarioServlet extends HttpServlet {
             UsuarioBean usuario = new UsuarioBean();
             usuario.setNome_usuario(request.getParameter("nome_usuario"));
             usuario.setSenha(request.getParameter("senha"));
-            if(udao.consultarLogin(usuario)){
-                System.out.println("teste 1");
-                session.setAttribute("usuario", request.getParameter("nome_usuario"));
+            UsuarioBean user = udao.consultarLogin(usuario);
+            if(user.getNome() != null){
+                session.setAttribute("usuario", user);
                 response.sendRedirect("index.jsp");
             }else{
                 response.sendRedirect("Logar.jsp");

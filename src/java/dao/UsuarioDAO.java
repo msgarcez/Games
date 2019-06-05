@@ -88,23 +88,26 @@ public class UsuarioDAO {
             throw new RuntimeException(e);
         }
     }
-    public boolean consultarLogin(UsuarioBean user){
-        boolean aux = false;
+    public UsuarioBean consultarLogin(UsuarioBean user){
         try {
             ps = conexao.prepareStatement("SELECT * FROM usuario WHERE nome_usuario=? AND senha=?");
             ps.setString(1, user.getNome_usuario());
             ps.setString(2, user.getSenha());
             ResultSet rs = ps.executeQuery();
+            UsuarioBean usuario = new UsuarioBean();
             while(rs.next()){
-                if(rs.getString("nome_usuario") != null){
-                    aux = true;
-                }
+                usuario.setId(rs.getInt("id"));
+                usuario.setNome_usuario(rs.getString("nome_usuario"));
+                usuario.setSenha(rs.getString("senha"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setAdmin(rs.getBoolean("admin"));
             }
+            return usuario;
             
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return aux;
     }
     public Integer consultarIdUsuario(UsuarioBean user){
         try {

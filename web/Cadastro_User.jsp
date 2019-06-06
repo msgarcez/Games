@@ -53,8 +53,7 @@
                                 <label for="email">E-mail</label>
                             </div>
                             <div class="buttons-set form-buttons">
-                                <p class="waves-effect waves-light btn" class="back-link"><a href="index.jsp"><small>&laquo; </small>Voltar</a></p>
-                                <button class="waves-effect waves-light btn" type="button" class="button" title="Voltar"><span><span>Voltar</span></span></button>
+                                <a class="waves-effect waves-light btn" href="index.jsp"><small>&laquo; </small>Voltar</a>
                                 <button class="waves-effect waves-light btn" type="submit" class="button" title="Cadastrar"><span><span>Cadastrar</span></span></button>
                             </div>
                         </div>

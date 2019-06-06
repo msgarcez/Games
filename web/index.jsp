@@ -33,7 +33,7 @@
                                 UsuarioBean usuario = new UsuarioBean();
                                 usuario = (UsuarioBean) session.getAttribute("usuario");
                         %>
-                    <li><a href="index.jsp"><%=usuario.getNome_usuario()%></a></li>
+                    <li><a href="Altera_User.jsp"><%=usuario.getNome_usuario()%></a></li>
                         <%
                             if (usuario.getAdmin()) {
                         %>

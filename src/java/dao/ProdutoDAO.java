@@ -43,6 +43,19 @@ public class ProdutoDAO {
             throw new RuntimeException(e);
         }
     }
+    public void consultaCategoria_Produto(){
+        try {
+            ps = conexao.prepareStatement("select categoria.nome from produto, categoria where produto.categoria=categoria.id");
+            ResultSet rs = ps.executeQuery();
+            List<ProdutoBean> ListaCategorias = new ArrayList<ProdutoBean>();
+            while(rs.next()){
+                ProdutoBean produto = new  ProdutoBean();
+                produto.setId_categoria(rs.getInt("categoria"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     //método para LISTAR todos os cliente cadastrados
     public List todosProdutos()throws SQLException{
         try {

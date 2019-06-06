@@ -15,6 +15,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="css/materialize.css" type="text/css" rel="stylesheet"/>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
+        <script src="js/materialize.js" type="text/javascript"></script>
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">
@@ -52,8 +53,9 @@
                                 <label for="email">E-mail</label>
                             </div>
                             <div class="buttons-set form-buttons">
-                                <p class="back-link"><a href="index.jsp"><small>&laquo; </small>Voltar</a></p>
-                                <button type="submit" class="button" title="Cadastrar"><span><span>Cadastrar</span></span></button>
+                                <p class="waves-effect waves-light btn" class="back-link"><a href="index.jsp"><small>&laquo; </small>Voltar</a></p>
+                                <button class="waves-effect waves-light btn" type="button" class="button" title="Voltar"><span><span>Voltar</span></span></button>
+                                <button class="waves-effect waves-light btn" type="submit" class="button" title="Cadastrar"><span><span>Cadastrar</span></span></button>
                             </div>
                         </div>
                     </form>
@@ -61,4 +63,13 @@
             </div><br><br>
         </div>
     </body>
+
+    <script>
+
+        $(document).ready(function () {
+            $('input#input_text, textarea#textarea2').characterCounter();
+        });
+
+    </script>
+
 </html>

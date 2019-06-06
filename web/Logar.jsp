@@ -44,12 +44,15 @@
                                 <input name="senha" type="password" class="validate">
                                 <label for="senha">Password</label>
                             </div>
+                            
+                            <div class="icon-block">
+                        </div>
                             <div class="buttons-set form-buttons">
                                 <a class="waves-effect waves-light btn" href="index.jsp"><small>&laquo; </small>Voltar</a>
-                                <button class="waves-effect waves-light btn" type="submit" class="button" title="Enviar"><span><span>Enviar</span></span></button>
+                                <button class="waves-effect waves-light btn" type="submit" class="button" title="Enviar"><span><span>Entrar</span></span></button>
                                 
-                                
-                                <p class="back-link"><a href="Cadastro_User.jsp"><small>&laquo; </small>Cadastrar</a></p>
+                                <br><br>
+                                <a href="Cadastro_User.jsp">Cadastrar</a>
                                 
                                 
                             </div>

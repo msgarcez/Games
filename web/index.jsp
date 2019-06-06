@@ -58,11 +58,11 @@
                             <a href="ProdutoServlet?acao=verProduto&id=<%=produto.getId()%>">
                                 <div class="card-content">
                                     <div class="divider"></div>
-                                    <h5 class="black-text"><%=produto.getNome()%></h5>
-                                    <h6 class="black-text"><%= String.format("R$ %, .2f", produto.getPreco()).replace(",", ".")%></h6>
-                                    <h5 class="black-text"><%=produto.getId_categoria()%></h5>
-                                    <h5 class="black-text"><%=produto.getEspecificacao()%></h5>
-                                    <small class="black-text"><%=produto.getEstoque()%> Produtos no estoque</small>
+                                    <h5 class="black-text">Nome: <%=produto.getNome()%></h5>
+                                    <h6 class="black-text">Preço: <%= String.format("R$ %, .2f", produto.getPreco()).replace(",", ".")%></h6>
+                                    <h5 class="black-text">Categoria: <%=produto.getId_categoria()%></h5>
+                                    <h5 class="black-text">Tipo: <%=produto.getEspecificacao()%></h5>
+                                    <small class="black-text">Estoque: <%=produto.getEstoque()%></small>
                                 </div>
                             </a>
                         </div>

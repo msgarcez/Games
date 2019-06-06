@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.CategoriaBean;
 import model.ProdutoBean;
 
 /**
@@ -43,9 +44,9 @@ public class ProdutoDAO {
             throw new RuntimeException(e);
         }
     }
-    public void consultaCategoria_Produto(){
+    /*public String consultaCategoria_Produto(int id){
         try {
-            ps = conexao.prepareStatement("select categoria.nome from produto, categoria where produto.categoria=categoria.id");
+            ps = conexao.prepareStatement("select nome from categoria where produto.categoria=categoria.id");
             ResultSet rs = ps.executeQuery();
             List<ProdutoBean> ListaCategorias = new ArrayList<ProdutoBean>();
             while(rs.next()){
@@ -55,12 +56,12 @@ public class ProdutoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
     //método para LISTAR todos os cliente cadastrados
     public List todosProdutos()throws SQLException{
         try {
             //criar o ps prepared stattment
-            PreparedStatement ps = conexao.prepareStatement("Select * from produto");
+            PreparedStatement ps = conexao.prepareStatement("Select produto.id, produto.nome, produto.preco, categoria.nome as cat, produto.especificacao, produto.estoque from produto, categoria where produto.categoria = categoria.id");
              
             //cria o result set rs
             ResultSet rs = ps.executeQuery();
@@ -68,10 +69,11 @@ public class ProdutoDAO {
             while(rs.next()){
             //criando um objeto clientebean
             ProdutoBean produto = new ProdutoBean();
+            CategoriaBean categoria = new CategoriaBean();
             produto.setId(rs.getInt("id"));
             produto.setNome(rs.getString("nome"));
             produto.setPreco(rs.getDouble("preco"));
-            produto.setId_categoria(rs.getInt("categoria"));
+            produto.setNome_categoria(rs.getString("cat"));
             produto.setEspecificacao(rs.getString("especificacao"));
             produto.setEstoque(rs.getInt("estoque"));
             

@@ -60,7 +60,7 @@
                                     <div class="divider"></div>
                                     <h5 class="black-text">Nome: <%=produto.getNome()%></h5>
                                     <h6 class="black-text">Preço: <%= String.format("R$ %, .2f", produto.getPreco()).replace(",", ".")%></h6>
-                                    <h5 class="black-text">Categoria: <%=produto.getId_categoria()%></h5>
+                                    <h5 class="black-text">Categoria: <%=produto.getNome_categoria()%></h5>
                                     <h5 class="black-text">Tipo: <%=produto.getEspecificacao()%></h5>
                                     <small class="black-text">Estoque: <%=produto.getEstoque()%></small>
                                 </div>

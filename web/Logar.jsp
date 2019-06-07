@@ -48,11 +48,11 @@
                             <div class="icon-block">
                         </div>
                             <div class="buttons-set form-buttons">
-                                <a class="waves-effect waves-light btn" href="index.jsp"><small>&laquo; </small>Voltar</a>
-                                <button class="waves-effect waves-light btn" type="submit" class="button" title="Enviar"><span><span>Entrar</span></span></button>
-                                
+                                <a class="waves-effect light-blue btn" href="index.jsp"><small>&laquo; </small>Voltar</a>
+                                <button class="waves-effect light-blue btn button" type="submit" title="Enviar"><span><span>Entrar</span></span></button>
+                                <a class="waves-effect light-blue btn" href="Cadastro_User.jsp">Cadastrar</a>
                                 <br><br>
-                                <a href="Cadastro_User.jsp">Cadastrar</a>
+                                
                                 
                                 
                             </div>

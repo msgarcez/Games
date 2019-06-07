@@ -12,6 +12,7 @@ package model;
 public class CategoriaBean {
     private int id;
     private String nome;
+
     
     public CategoriaBean(){
         

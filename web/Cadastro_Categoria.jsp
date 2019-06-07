@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Cadastro_User
-    Created on : 01/06/2019, 18:08:46
+    Document   : Cadastro_Categoria
+    Created on : 06/06/2019, 20:38:00
     Author     : danie
 --%>
 
@@ -33,27 +33,18 @@
                         <div class="icon-block">
                         </div>
                     </div>
-                    <form method="post" class="col s12 m4" action="UsuarioServlet?acao=inserir">
-                        <h4>Cadastro Cliente:</h4>
+                    <form method="post" class="col s12 m4" action="CategoriaServlet?acao=cadastrar">
+                        <h4>Cadastro Categoria:</h4>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input name="nome_usuario" type="text" class="validate">
-                                <label for="nome_usuario">Nome do Usuário</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <input name="senha" type="password" class="validate">
-                                <label for="senha">Senha</label>
-                            </div>
-                            <div class="input-field col s12">
                                 <input name="nome" type="text" class="validate">
-                                <label for="nome">Nome</label>
+                                <label for="nome">Nome da Categoria</label>
                             </div>
-                            <div class="input-field col s12">
-                                <input name="email" type="email" class="validate">
-                                <label for="email">E-mail</label>
+
+                            <div class="icon-block">
                             </div>
                             <div class="buttons-set form-buttons">
-                                <a class="waves-effect light-blue btn" href="index.jsp"><small>&laquo; </small>Voltar</a>
+                                <a class="waves-effect light-blue btn" href="administrativa.jsp"><small>&laquo; </small>Voltar</a>
                                 <button class="waves-effect light-blue btn button" type="submit" title="Cadastrar"><span><span>Cadastrar</span></span></button>
                             </div>
                         </div>
@@ -62,13 +53,4 @@
             </div><br><br>
         </div>
     </body>
-
-    <script>
-
-        $(document).ready(function () {
-            $('input#input_text, textarea#textarea2').characterCounter();
-        });
-
-    </script>
-
 </html>

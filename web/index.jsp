@@ -50,7 +50,8 @@
             <div class="section">
                 <!--   Icon Section   -->
                 <div class="row">
-                    <%                        ProdutoDAO pdao = new ProdutoDAO();
+                    <%                        
+                        ProdutoDAO pdao = new ProdutoDAO();
                         List<ProdutoBean> produtos = pdao.todosProdutos();
                         for (ProdutoBean produto : produtos) {%>
                     <div class="col s3">

@@ -1,7 +1,7 @@
-    <%-- 
-    Document   : administrativa
-    Created on : 05/06/2019, 18:36:49
-    Author     : danie
+<%-- 
+Document   : administrativa
+Created on : 05/06/2019, 18:36:49
+Author     : danie
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -35,31 +35,45 @@
                     <div class="col s12 m4">
                         <ul class="collapsible">
                             <li>
-                                <div class="collapsible-header light-blue-text">
+                                <div class="collapsible-header light-blue white-text">
+                                    Registro de Categorias
+                                </div>
+                                <div class="collapsible-body light-blue lighten-5 light-blue-text">
+                                    <a href="Cadastro_Categoria.jsp" class="light-blue-text">Cadastrar Categorias</a>
+                                </div>
+                                <div class="collapsible-body light-blue lighten-5 light-blue-text">
+                                    <a href="Altera_Categoria.jsp" class="light-blue-text">Alterar Categorias</a>
+                                </div>
+                                <div class="collapsible-body light-blue lighten-5 light-blue-text">
+                                    <a href="#!" class="light-blue-text">Excluir Categorias</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header light-blue white-text">
                                     Registro de Produtos
                                 </div>
-                                <div class="collapsible-body">
+                                <div class="collapsible-body light-blue lighten-5 light-blue-text">
                                     <a href="#!" class="light-blue-text">Cadastrar Produtos</a>
                                 </div>
-                                <div class="collapsible-body">
+                                <div class="collapsible-body light-blue lighten-5 light-blue-text">
                                     <a href="#!" class="light-blue-text">Alterar Produtos</a>
                                 </div>
-                                <div class="collapsible-body">
+                                <div class="collapsible-body light-blue lighten-5 light-blue-text">
                                     <a href="#!" class="light-blue-text">Excluir Produtos</a>
                                 </div>
                             </li>
                             <li>
-                                <div class="collapsible-header light-green-text">
+                                <div class="collapsible-header light-blue white-text">
                                     Registro de Clientes
                                 </div>
-                                <div class="collapsible-body">
-                                    <a href="#!" class="light-green-text">Cadastrar Cliente</a>
+                                <div class="collapsible-body light-blue lighten-5 light-blue-text">
+                                    <a href="#!" class="light-blue-text">Cadastrar Cliente</a>
                                 </div>
-                                <div class="collapsible-body">
-                                    <a href="#!" class="light-green-text">Alterar Cliente</a>
+                                <div class="collapsible-body light-blue lighten-5 light-blue-text">
+                                    <a href="#!" class="light-blue-text">Alterar Cliente</a>
                                 </div>
-                                <div class="collapsible-body">
-                                    <a href="#!" class="light-green-text">Excluir Cliente</a>
+                                <div class="collapsible-body light-blue lighten-5 light-blue-text">
+                                    <a href="#!" class="light-blue-text">Excluir Cliente</a>
                                 </div>
                             </li>
                         </ul>

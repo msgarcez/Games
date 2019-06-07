@@ -16,19 +16,19 @@ public class ProdutoBean {
     //id_categoria referenciado ao bean CategoriaBean
     private int id_categoria;
     private String nome_categoria;
+    private String especificacao;
+    private int estoque;
 
+    public ProdutoBean() {
+        
+    }
+    
     public String getNome_categoria() {
         return nome_categoria;
     }
 
     public void setNome_categoria(String nome_categoria) {
         this.nome_categoria = nome_categoria;
-    }
-    private String especificacao;
-    private int estoque;
-
-    public ProdutoBean() {
-        
     }
 
     public int getId() {

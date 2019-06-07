@@ -5,22 +5,23 @@
  */
 package controller;
 
-import dao.UsuarioDAO;
+import dao.CategoriaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.UsuarioBean;
+import model.CategoriaBean;
 
 /**
  *
  * @author danie
  */
-public class UsuarioServlet extends HttpServlet {
+public class CategoriaServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,33 +35,19 @@ public class UsuarioServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String acao = request.getParameter("acao");
-        UsuarioDAO udao = new UsuarioDAO();
+        CategoriaDAO cdao = new CategoriaDAO();
         RequestDispatcher rd = null;
-        HttpSession session = request.getSession();
-        if(acao.equalsIgnoreCase("inserir")){
-            UsuarioBean usuario = new UsuarioBean();
-            usuario.setNome_usuario(request.getParameter("nome_usuario"));
-            usuario.setSenha(request.getParameter("senha"));
-            usuario.setNome(request.getParameter("nome"));
-            usuario.setEmail(request.getParameter("email"));
-            udao.inserir(usuario);
-            rd = request.getRequestDispatcher("Logar.jsp");
+        HttpSession session = null;
+        if(acao.equalsIgnoreCase("cadastrar")){
+            CategoriaBean categoria = new CategoriaBean();
+            categoria.setNome(request.getParameter("nome"));
+            cdao.inserir(categoria);
+            rd = request.getRequestDispatcher("administrativa.jsp");
             rd.forward(request, response);
         }
-        if(acao.equalsIgnoreCase("logar")){
-            UsuarioBean usuario = new UsuarioBean();
-            usuario.setNome_usuario(request.getParameter("nome_usuario"));
-            usuario.setSenha(request.getParameter("senha"));
-            UsuarioBean user = udao.consultarLogin(usuario);
-            if(user.getNome() != null){
-                session.setAttribute("usuario", user);
-                response.sendRedirect("index.jsp");
-            }else{
-                response.sendRedirect("Logar.jsp");
-            }
-        }
+        
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

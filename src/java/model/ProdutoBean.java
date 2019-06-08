@@ -17,6 +17,7 @@ public class ProdutoBean {
     private int id_categoria;
     private String nome_categoria;
     private String especificacao;
+    private String img;
     private int estoque;
 
     public ProdutoBean() {
@@ -77,6 +78,14 @@ public class ProdutoBean {
 
     public void setEstoque(int estoque) {
         this.estoque = estoque;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
     
     

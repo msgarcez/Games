@@ -61,14 +61,10 @@
                 </div>
             </div><br><br>
         </div>
+        <script>
+            $(document).ready(function () {
+                $('input#input_text, textarea#textarea2').characterCounter();
+            });
+        </script>
     </body>
-
-    <script>
-
-        $(document).ready(function () {
-            $('input#input_text, textarea#textarea2').characterCounter();
-        });
-
-    </script>
-
 </html>

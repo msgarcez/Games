@@ -53,7 +53,7 @@ Author     : danie
                                     Registro de Produtos
                                 </div>
                                 <div class="collapsible-body light-blue lighten-5 light-blue-text">
-                                    <a href="#!" class="light-blue-text">Cadastrar Produtos</a>
+                                    <a href="Cadastro_Produto.jsp" class="light-blue-text">Cadastrar Produtos</a>
                                 </div>
                                 <div class="collapsible-body light-blue lighten-5 light-blue-text">
                                     <a href="#!" class="light-blue-text">Alterar Produtos</a>
@@ -67,7 +67,7 @@ Author     : danie
                                     Registro de Clientes
                                 </div>
                                 <div class="collapsible-body light-blue lighten-5 light-blue-text">
-                                    <a href="#!" class="light-blue-text">Cadastrar Cliente</a>
+                                    <a href="Cadastro_User.jsp" class="light-blue-text">Cadastrar Cliente</a>
                                 </div>
                                 <div class="collapsible-body light-blue lighten-5 light-blue-text">
                                     <a href="#!" class="light-blue-text">Alterar Cliente</a>

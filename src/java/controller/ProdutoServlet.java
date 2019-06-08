@@ -48,8 +48,9 @@ public class ProdutoServlet extends HttpServlet {
             produto.setId_categoria(Integer.parseInt(request.getParameter("categoria")));
             produto.setEspecificacao(request.getParameter("especificacao"));
             produto.setEstoque(Integer.parseInt(request.getParameter("estoque")));
+            produto.setImg(request.getParameter("img"));
             pdao.inserir(produto);
-            rd = request.getRequestDispatcher("index.html");
+            rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
         if (acao.equalsIgnoreCase("listar")) {
@@ -59,12 +60,14 @@ public class ProdutoServlet extends HttpServlet {
         }
         if (acao.equalsIgnoreCase("verProduto")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            //ProdutoBean produto = pdao.selecionaPorId(id);
-            //session.setAttribute("produto", produto);
+            ProdutoBean produto = (ProdutoBean) pdao.selecionaPorId(id);
+            session.setAttribute("produto", produto);
             if (session.getAttribute("usuario") == null) {
                 session.setAttribute("msg", "Você preicsa estar logado para adicionar ao carrinho");
+                rd = request.getRequestDispatcher("Logar.jsp");
+                rd.forward(request, response);
             } else {
-                rd = request.getRequestDispatcher("index.jsp");
+                rd = request.getRequestDispatcher("Logar.jsp");
                 rd.forward(request, response);
             }
         }

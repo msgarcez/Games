@@ -60,7 +60,7 @@
                             <a href="ProdutoServlet?acao=verProduto&id=<%=produto.getId()%>">
                                 <div class="card-content">
                                     <div class="divider"></div>
-                                    <img src="<%=produto.getImg()%>" width="200" height="200" />
+                                    <img src="img/<%=produto.getImg()%>" width="200" height="200" />
                                     <h5 class="black-text">Nome: <%=produto.getNome()%></h5>
                                     <h6 class="black-text">Preço: <%= String.format("R$ %, .2f", produto.getPreco()).replace(",", ".")%></h6>
                                     <h5 class="black-text">Categoria: <%=produto.getNome_categoria()%></h5>

@@ -57,7 +57,7 @@
                                 <label for="estoque">Estoque</label>
                             </div>
                             <div class="input-field col s12">
-                                <input name="img" type="text" class="validate" >
+                                <input name="img" type="file" class="validate" >
                                 <label for="img">Imagem</label>
                             </div>
                             <div class="buttons-set form-buttons">

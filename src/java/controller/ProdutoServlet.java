@@ -7,7 +7,6 @@ package controller;
 
 import dao.ProdutoDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -60,16 +59,9 @@ public class ProdutoServlet extends HttpServlet {
         }
         if (acao.equalsIgnoreCase("verProduto")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            ProdutoBean produto = (ProdutoBean) pdao.selecionaPorId(id);
-            session.setAttribute("produto", produto);
-            if (session.getAttribute("usuario") == null) {
-                session.setAttribute("msg", "Você preicsa estar logado para adicionar ao carrinho");
-                rd = request.getRequestDispatcher("Logar.jsp");
-                rd.forward(request, response);
-            } else {
-                rd = request.getRequestDispatcher("Logar.jsp");
-                rd.forward(request, response);
-            }
+            List<ProdutoBean> produto = pdao.selecionaPorId(id);
+            rd = request.getRequestDispatcher("Detalhes_Produtos.jsp");
+            rd.forward(request, response);
         }
     }
 

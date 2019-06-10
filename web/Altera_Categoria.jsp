@@ -6,6 +6,7 @@
 
 <%@page import="model.CategoriaBean"%>
 <%@page import="dao.CategoriaDAO"%>
+<%@page import="controller.CategoriaServlet"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -35,40 +36,39 @@
                 <!--   Icon Section   -->
                 <div class="row">
                     <div class="col s12 m4">
-                        <div class="icon-block">
-                        </div>
                     </div>
-                    <form method="post" class="col s12 m4" action="CategoriaServlet?acao=cadastrar">
-                        <h4>Alterar Categoria:</h4>
-                        <div class="row">
-                            <div class="icon-block">
-                            </div>
-                            <table align="center" border="1px" width="80%">
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Nome</th>
-                                </tr>
+                    <div class="col s12 m4">
+                        <ul class="collapsible">
+                            <li>
+                                <div class="collapsible-header light-blue white-text">Selecione uma Categoria</div>
                                 <%
                                     CategoriaDAO cdao = new CategoriaDAO();
                                     List<CategoriaBean> categorias = cdao.listarCategoriaCombo();
-                                    for (CategoriaBean categoria : categorias){
+                                    for (CategoriaBean categoria : categorias) {
                                 %>
-                                <tr>
-                                    <th><%=categoria.getId()%></th>
-                                    <th><a href="#"><%=categoria.getNome()%></a></th>
-                                </tr>
+                                <div class="collapsible-body light-blue lighten-5 light-blue-text">
+                                    <a href="CategoriaServlet?acao=editar&id=<%=categoria.getId()%>" class="light-blue-text">Id: <%=categoria.getId()%><br> Nome: <%=categoria.getNome()%></a>
+                                </div>
                                 <%
                                     }
                                 %>
-                            </table>
-                            <!--<div class="buttons-set form-buttons">
-                                <a class="waves-effect light-blue btn" href="administrativa.jsp"><small>&laquo; </small>Voltar</a>
-                                <button class="waves-effect light-blue btn button" type="submit" title="Cadastrar"><span><span>Cadastrar</span></span></button>
-                            </div>-->
-                        </div>
-                    </form>
-                </div>
-            </div><br><br>
+                            </li>
+                        </ul>
+                            <a class="waves-effect light-blue btn" href="administrativa.jsp"><small>&laquo; </small>Voltar</a>
+                        <br><br>
+                    </div>
+                </div><br><br>
+            </div>
         </div>
+        <script>
+            var dropdowns = document.querySelectorAll('.dropdown-trigger')
+            for (var i = 0; i < dropdowns.length; i++) {
+                M.Dropdown.init(dropdowns[i]);
+            }
+            var collapsibles = document.querySelectorAll('.collapsible')
+            for (var i = 0; i < collapsibles.length; i++) {
+                M.Collapsible.init(collapsibles[i]);
+            }
+        </script>
     </body>
 </html>

@@ -37,7 +37,7 @@ public class CategoriaServlet extends HttpServlet {
         String acao = request.getParameter("acao");
         CategoriaDAO cdao = new CategoriaDAO();
         RequestDispatcher rd = null;
-        HttpSession session = null;
+        HttpSession session = request.getSession();
         if(acao.equalsIgnoreCase("cadastrar")){
             CategoriaBean categoria = new CategoriaBean();
             categoria.setNome(request.getParameter("nome"));
@@ -45,7 +45,13 @@ public class CategoriaServlet extends HttpServlet {
             rd = request.getRequestDispatcher("administrativa.jsp");
             rd.forward(request, response);
         }
-        
+        if (acao.equalsIgnoreCase("editar")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            CategoriaBean categoria = cdao.selecionaPorId(id);
+            session.setAttribute("categoria", categoria);
+            rd = request.getRequestDispatcher("Detalhes_Produtos.jsp");
+            rd.forward(request, response);
+        }
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

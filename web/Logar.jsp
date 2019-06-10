@@ -21,7 +21,6 @@
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container"><a href="index.jsp">Bem Vindo</a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="Logar.jsp">Login</a></li>
                 </ul>
             </div>
         </nav>
@@ -44,31 +43,24 @@
                                 <input name="senha" type="password" class="validate">
                                 <label for="senha">Password</label>
                             </div>
-                            
+
                             <div class="icon-block">
-                        </div>
+                            </div>
                             <div class="buttons-set form-buttons">
                                 <a class="waves-effect light-blue btn" href="index.jsp"><small>&laquo; </small>Voltar</a>
                                 <button class="waves-effect light-blue btn button" type="submit" title="Enviar"><span><span>Entrar</span></span></button>
                                 <a class="waves-effect light-blue btn" href="Cadastro_User.jsp">Cadastrar</a>
                                 <br><br>
-                                
-                                
-                                
                             </div>
                         </div>
                     </form>
                 </div>
             </div><br><br>
         </div>
+        <script>
+            $(document).ready(function () {
+                $('input#input_text, textarea#textarea2').characterCounter();
+            });
+        </script>
     </body>
-
-    <script>
-
-        $(document).ready(function () {
-            $('input#input_text, textarea#textarea2').characterCounter();
-        });
-
-    </script>
-
 </html>

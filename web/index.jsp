@@ -27,7 +27,6 @@
             <div class="nav-wrapper container">
                 <a href="index.jsp">Bem Vindo</a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="Logar.jsp">Login</a></li>
                     <li><a href="carrinho.jsp">Carrinho</a></li>
                         <%
                             if (session.getAttribute("usuario") != null) {
@@ -35,14 +34,19 @@
                                 usuario = (UsuarioBean) session.getAttribute("usuario");
                         %>
                     <li><a href="Altera_User.jsp"><%=usuario.getNome_usuario()%></a></li>
+                    <li><a href="UsuarioServlet?acao=sair">Sair</a></li>
                         <%
                             if (usuario.getAdmin()) {
                         %>
                     <li><a href="administrativa.jsp">Área administrativa</a></li>
                         <%
                                 }
-                            }
+                            }else{
                         %>
+                    <li><a href="Logar.jsp">Login</a></li>
+                    <%
+                        }
+                    %>
                 </ul>
             </div>
         </nav>
@@ -61,7 +65,7 @@
                                 <div class="card-content">
                                     <div class="divider"></div>
                                     <img src="img/<%=produto.getImg()%>" width="200" height="200" />
-                                    <h5 class="black-text">Nome: <%=produto.getNome()%></h5>
+                                    <h5 class="black-text"><%=produto.getNome()%></h5>
                                     <h6 class="black-text">Preço: <%= String.format("R$ %, .2f", produto.getPreco()).replace(",", ".")%></h6>
                                     <h5 class="black-text">Categoria: <%=produto.getNome_categoria()%></h5>
                                     <h5 class="black-text">Tipo: <%=produto.getEspecificacao()%></h5>

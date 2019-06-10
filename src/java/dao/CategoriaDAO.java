@@ -45,7 +45,7 @@ public class CategoriaDAO {
 
     public List listarCategoriaCombo() throws SQLException{
         try {
-            PreparedStatement ps = conexao.prepareStatement("select id, nome from categoria order by nome");
+            PreparedStatement ps = conexao.prepareStatement("select id, nome from categoria order by id");
             ResultSet rs = ps.executeQuery();
             List<CategoriaBean> listaCategoria = new ArrayList<CategoriaBean>();
             while(rs.next()){
@@ -60,6 +60,21 @@ public class CategoriaDAO {
         } catch (Exception e) {
             System.out.println("erro: "+e.getMessage());
             return null;
+        }
+    }
+    public CategoriaBean selecionaPorId(int id){
+        try {
+            ps = conexao.prepareStatement("Select id, nome from categoria where id=?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+                CategoriaBean categoria = new CategoriaBean();
+            while(rs.next()){
+                categoria.setId(rs.getInt("id"));
+                categoria.setNome(rs.getString("nome"));         
+            }
+            return categoria;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }

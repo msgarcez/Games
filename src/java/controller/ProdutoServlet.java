@@ -39,7 +39,7 @@ public class ProdutoServlet extends HttpServlet {
         String acao = request.getParameter("acao");
         ProdutoDAO pdao = new ProdutoDAO();
         RequestDispatcher rd = null;
-        HttpSession session = null;
+        HttpSession session = request.getSession();
         if (acao.equalsIgnoreCase("produto")) {
             ProdutoBean produto = new ProdutoBean();
             produto.setNome(request.getParameter("nome"));
@@ -59,7 +59,8 @@ public class ProdutoServlet extends HttpServlet {
         }
         if (acao.equalsIgnoreCase("verProduto")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            List<ProdutoBean> produto = pdao.selecionaPorId(id);
+            ProdutoBean produto = pdao.selecionaPorId(id);
+            session.setAttribute("produto", produto);
             rd = request.getRequestDispatcher("Detalhes_Produtos.jsp");
             rd.forward(request, response);
         }

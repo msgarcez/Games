@@ -22,7 +22,7 @@ Author     : danie
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container"><a href="index.jsp">Bem Vindo</a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="Logar.jsp">Login</a></li>
+                    <li><a href="index.jsp">Voltar</a></li>
                 </ul>
             </div>
         </nav>
@@ -56,7 +56,7 @@ Author     : danie
                                     <a href="Cadastro_Produto.jsp" class="light-blue-text">Cadastrar Produtos</a>
                                 </div>
                                 <div class="collapsible-body light-blue lighten-5 light-blue-text">
-                                    <a href="#!" class="light-blue-text">Alterar Produtos</a>
+                                    <a href="Alterar_Produto.jsp" class="light-blue-text">Alterar Produtos</a>
                                 </div>
                                 <div class="collapsible-body light-blue lighten-5 light-blue-text">
                                     <a href="#!" class="light-blue-text">Excluir Produtos</a>

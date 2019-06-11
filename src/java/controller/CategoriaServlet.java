@@ -36,10 +36,10 @@ public class CategoriaServlet extends HttpServlet {
             throws ServletException, IOException {
         String acao = request.getParameter("acao");
         CategoriaDAO cdao = new CategoriaDAO();
+        CategoriaBean categoria = new CategoriaBean();
         RequestDispatcher rd = null;
         HttpSession session = request.getSession();
         if(acao.equalsIgnoreCase("cadastrar")){
-            CategoriaBean categoria = new CategoriaBean();
             categoria.setNome(request.getParameter("nome"));
             cdao.inserir(categoria);
             rd = request.getRequestDispatcher("administrativa.jsp");
@@ -47,9 +47,17 @@ public class CategoriaServlet extends HttpServlet {
         }
         if (acao.equalsIgnoreCase("editar")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            CategoriaBean categoria = cdao.selecionaPorId(id);
+            categoria = cdao.selecionaPorId(id);
             session.setAttribute("categoria", categoria);
-            rd = request.getRequestDispatcher("Detalhes_Produtos.jsp");
+            rd = request.getRequestDispatcher("Edita_Categoria.jsp");
+            rd.forward(request, response);
+        }
+        if(acao.equalsIgnoreCase("alterar_categoria")){
+            int id = Integer.parseInt(request.getParameter("id"));
+            categoria.setId(id);
+            categoria.setNome(request.getParameter("nome"));
+            cdao.alterar(categoria);
+            rd = request.getRequestDispatcher("Altera_Categoria.jsp");
             rd.forward(request, response);
         }
     }

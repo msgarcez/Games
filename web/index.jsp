@@ -27,7 +27,6 @@
             <div class="nav-wrapper container">
                 <a href="index.jsp">Bem Vindo</a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="carrinho.jsp">Carrinho</a></li>
                         <%
                             if (session.getAttribute("usuario") != null) {
                                 UsuarioBean usuario = new UsuarioBean();
@@ -39,11 +38,13 @@
                             if (usuario.getAdmin()) {
                         %>
                     <li><a href="administrativa.jsp">Área administrativa</a></li>
+                    <li><a href="carrinho.jsp">Carrinho</a></li>
                         <%
                                 }
                             }else{
                         %>
                     <li><a href="Logar.jsp">Login</a></li>
+                    <li><a href="carrinho.jsp">Carrinho</a></li>
                     <%
                         }
                     %>

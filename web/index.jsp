@@ -38,16 +38,15 @@
                             if (usuario.getAdmin()) {
                         %>
                     <li><a href="administrativa.jsp">Área administrativa</a></li>
-                    <li><a href="carrinho.jsp">Carrinho</a></li>
                         <%
                                 }
                             }else{
                         %>
                     <li><a href="Logar.jsp">Login</a></li>
-                    <li><a href="carrinho.jsp">Carrinho</a></li>
                     <%
                         }
                     %>
+                    <li><a href="carrinho.jsp">Carrinho</a></li>
                 </ul>
             </div>
         </nav>
@@ -66,10 +65,10 @@
                                 <div class="card-content">
                                     <div class="divider"></div>
                                     <img src="img/<%=produto.getImg()%>" width="200" height="200" />
-                                    <h5 class="black-text"><%=produto.getNome()%></h5>
+                                    <h6 class="black-text"><%=produto.getNome()%></h6>
                                     <h6 class="black-text">Preço: <%= String.format("R$ %, .2f", produto.getPreco()).replace(",", ".")%></h6>
-                                    <h5 class="black-text">Categoria: <%=produto.getNome_categoria()%></h5>
-                                    <h5 class="black-text">Tipo: <%=produto.getEspecificacao()%></h5>
+                                    <h6 class="black-text">Plataforma: <%=produto.getNome_categoria()%></h6>
+                                    <h6 class="black-text">Categoria: <%=produto.getEspecificacao()%></h6>
                                     <small class="black-text">Estoque: <%=produto.getEstoque()%></small>
                                 </div>
                             </a>

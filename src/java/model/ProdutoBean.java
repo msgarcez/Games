@@ -19,6 +19,7 @@ public class ProdutoBean {
     private String especificacao;
     private String img;
     private int estoque;
+    private int quantidade;
 
     public ProdutoBean() {
         
@@ -86,6 +87,14 @@ public class ProdutoBean {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
     
     

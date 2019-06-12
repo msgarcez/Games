@@ -57,8 +57,7 @@
                                 <label for="estoque">Estoque</label>
                             </div>
                             <div class="input-field col s12">
-                                <input name="img" type="file" class="validate" >
-                                <label for="img">Imagem</label>
+                                <input name="img" type="file" class="validate ">
                             </div>
                             <div class="buttons-set form-buttons">
                                 <a class="waves-effect light-blue btn" href="administrativa.jsp"><small>&laquo; </small>Voltar</a>

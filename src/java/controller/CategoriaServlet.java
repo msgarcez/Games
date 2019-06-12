@@ -6,8 +6,9 @@
 package controller;
 
 import dao.CategoriaDAO;
+import dao.ProdutoDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.CategoriaBean;
+import model.ProdutoBean;
 
 /**
  *
@@ -36,6 +38,8 @@ public class CategoriaServlet extends HttpServlet {
             throws ServletException, IOException {
         String acao = request.getParameter("acao");
         CategoriaDAO cdao = new CategoriaDAO();
+        ProdutoDAO pdao = new ProdutoDAO();
+        ProdutoBean pbean = new ProdutoBean();
         CategoriaBean categoria = new CategoriaBean();
         RequestDispatcher rd = null;
         HttpSession session = request.getSession();
@@ -58,6 +62,23 @@ public class CategoriaServlet extends HttpServlet {
             categoria.setNome(request.getParameter("nome"));
             cdao.alterar(categoria);
             rd = request.getRequestDispatcher("Altera_Categoria.jsp");
+            rd.forward(request, response);
+        }
+        if(acao.equalsIgnoreCase("adicionar_carrinho")){
+            int id = Integer.parseInt(request.getParameter("id"));
+            int quantidade = Integer.parseInt(request.getParameter("quantidade"));
+            pbean = pdao.selecionaPorId(id);
+            List<ProdutoBean> carrinho = new ArrayList<ProdutoBean>();
+            if(session.getAttribute("carrinho") != null){
+                List<ProdutoBean> produtos = (List<ProdutoBean>) session.getAttribute("carrinho");
+                for (ProdutoBean p : produtos) {
+                    carrinho.add(p);
+                }
+            }
+            pbean.setQuantidade(quantidade);
+            carrinho.add(pbean);
+            session.setAttribute("carrinho", carrinho);
+            rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
     }

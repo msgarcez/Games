@@ -4,6 +4,7 @@
     Author     : danie
 --%>
 
+<%@page import="model.UsuarioBean"%>
 <%@page import="java.util.List"%>
 <%@page import="model.ProdutoBean"%>
 <%@page import="dao.ProdutoDAO"%>
@@ -26,7 +27,18 @@
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container"><a href="index.jsp">Bem Vindo</a>
                 <ul class="right hide-on-med-and-down">
+                    <%
+                        if (session.getAttribute("usuario") != null) {
+                            UsuarioBean usuario = new UsuarioBean();
+                            usuario = (UsuarioBean) session.getAttribute("usuario");
+                    %>
+                    <li><a href="Altera_User.jsp"><%=usuario.getNome_usuario()%></a></li>
                     <li><a href="index.jsp">Voltar</a></li>
+                    <li><a href="carrinho.jsp">Carrinho</a></li>
+                        <%
+                            }
+                        %>
+
                 </ul>
             </div>
         </nav>
@@ -47,21 +59,47 @@
                         </div>
                     </div>
                     <div class="col s12 m4">
-                        <form method="post" class="col s12 m4" action="CategoriaServlet?acao=adicionar_carrinho&id=<%=pr.getId()%>">
+                        <form method="post" action="CategoriaServlet?acao=adicionar_carrinho&id=<%=pr.getId()%>">
                             <div class="row">
-
-                                <h3><%=pr.getNome()%></h3>
                                 <div class="input-field col s12">
-                                    <input name="nome" type="text" class="validate" value="<%=pr.getNome()%>">
-                                    <label for="nome">Nome da Categoria</label>
+                                    <input name="nome" type="text" class="validate" disabled value="<%=pr.getNome()%>">
+                                    <label for="nome">Nome: </label>
                                 </div>
-
+                                <div class="input-field col s12">
+                                    <input name="preco" type="text" class="validate" disabled value="<%= String.format("R$ %, .2f", pr.getPreco()).replace(",", ".")%>">
+                                    <label for="preco">Preço: </label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input name="categoria" type="text" class="validate" disabled value="<%=pr.getNome_categoria()%>">
+                                    <label for="categoria">Plataforma: </label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input name="quantidade" type="number" class="validate">
+                                    <label for="quantidade">Quantidade: </label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input name="especificacao" type="text" class="validate" disabled value="<%=pr.getEstoque()%>">
+                                    <label for="especificacao">Estoque: </label>
+                                </div>
                                 <div class="icon-block">
                                 </div>
+                                <%
+                                    if (session.getAttribute("usuario") == null) {
+                                %>
                                 <div class="buttons-set form-buttons">
                                     <a class="waves-effect light-blue btn" href="index.jsp"><small>&laquo; </small>Voltar</a>
-                                    <button class="waves-effect light-blue btn button" type="submit" title="Cadastrar"><span><span>Cadastrar</span></span></button>
+                                    <a class="waves-effect light-blue btn" href="Logar.jsp">Add Carrinho</a>
                                 </div>
+                                <%
+                                } else {
+                                %>
+                                <div class="buttons-set form-buttons">
+                                    <a class="waves-effect light-blue btn" href="index.jsp"><small>&laquo; </small>Voltar</a>
+                                    <button class="waves-effect light-blue btn button" type="submit" title="Add Carrinho"><span><span>Add Carrinho</span></span></button>
+                                </div>
+                                <%
+                                    }
+                                %>
                             </div>
                         </form>
                     </div>

@@ -45,6 +45,28 @@ public class ProdutoDAO {
             throw new RuntimeException(e);
         }
     }
+    public List selecionaProdutoId(int id){
+        try {
+            ps = conexao.prepareStatement("Select produto.id, produto.nome, produto.preco, categoria.nome as cat, produto.especificacao, produto.estoque, produto.img from produto, categoria where produto.categoria = categoria.id and produto.id=?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            List<ProdutoBean> listaProduto = new ArrayList<ProdutoBean>();
+            while(rs.next()){
+                ProdutoBean produto = new ProdutoBean();
+                produto.setId(rs.getInt("id"));
+                produto.setNome(rs.getString("nome"));
+                produto.setPreco(rs.getDouble("preco"));
+                produto.setNome_categoria(rs.getString("cat"));
+                produto.setEspecificacao(rs.getString("especificacao"));
+                produto.setEstoque(rs.getInt("estoque"));
+                produto.setImg(rs.getString("img"));
+                listaProduto.add(produto);
+            }
+            return listaProduto;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public ProdutoBean selecionaPorId(int id){
         try {
             ps = conexao.prepareStatement("Select produto.id, produto.nome, produto.preco, categoria.nome as cat, produto.especificacao, produto.estoque, produto.img from produto, categoria where produto.categoria = categoria.id and produto.id=?");

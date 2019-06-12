@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <form method="post" class="col s12 m4" action="UsuarioServlet?acao=logar">
-                        <h4>Login:</h4>
+                        <h4 class="light-blue-text">Login:</h4>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input name="nome_usuario" type="text" class="validate">

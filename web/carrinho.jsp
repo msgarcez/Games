@@ -57,7 +57,7 @@
                                     <div class="divider"></div>
                                     <img src="img/<%=pr.getImg()%>" width="200" height="200" />
                                     <h6 class="black-text"><%=pr.getNome()%></h6>
-                                    <h6 class="black-text">Preço: <%= "R$" + (pr.getPreco()* pr.getQuantidade()) %></h6>
+                                    <h6 class="black-text">Preço: <%=(pr.getPreco()* pr.getQuantidade()) %></h6>
                                     <h6 class="black-text">Plataforma: <%=pr.getNome_categoria()%></h6>
                                     <h6 class="black-text">Categoria: <%=pr.getEspecificacao()%></h6>
                                     <small class="black-text">Estoque: <%=pr.getEstoque()%></small>

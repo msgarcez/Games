@@ -48,6 +48,12 @@ public class ProdutoServlet extends HttpServlet {
             produto.setEspecificacao(request.getParameter("especificacao"));
             produto.setEstoque(Integer.parseInt(request.getParameter("estoque")));
             produto.setImg(request.getParameter("img"));
+
+            String id_produto = request.getParameter("id_produto");
+            String nome = id_produto + Integer.toString((int) (Math.random() * 999999999));
+            String caminho = request.getServletContext().getRealPath("img") + "/../../web/img/" + nome + ".jpg";
+            System.out.println(caminho);
+
             pdao.inserir(produto);
             rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);

@@ -21,6 +21,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="css/materialize.css" type="text/css" rel="stylesheet"/>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">
@@ -46,7 +47,7 @@
                     <%
                         }
                     %>
-                    <li><a href="carrinho.jsp">Carrinho</a></li>
+                    <li><a href="carrinho.jsp"> <i class="material-icons">add_shopping_cart</i></a></li>
                 </ul>
             </div>
         </nav>

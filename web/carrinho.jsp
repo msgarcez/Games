@@ -20,6 +20,7 @@
         <link href="css/materialize.css" type="text/css" rel="stylesheet"/>
         <link href="css/materialize.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="js/init.js" type="text/javascript"></script>
         <script src="js/materialize.js" type="text/javascript"></script>
     </head>

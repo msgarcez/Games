@@ -65,23 +65,7 @@ public class CategoriaServlet extends HttpServlet {
             rd = request.getRequestDispatcher("Altera_Categoria.jsp");
             rd.forward(request, response);
         }
-        if(acao.equalsIgnoreCase("adicionar_carrinho")){
-            int id = Integer.parseInt(request.getParameter("id"));
-            int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-            pbean = pdao.selecionaPorId(id);
-            List<ProdutoBean> carrinho = new ArrayList<ProdutoBean>();
-            if(session.getAttribute("carrinho") != null){
-                List<ProdutoBean> produtos = (List<ProdutoBean>) session.getAttribute("carrinho");
-                for (ProdutoBean p : produtos) {
-                    carrinho.add(p);
-                }
-            }
-            pbean.setQuantidade(quantidade);
-            carrinho.add(pbean);
-            session.setAttribute("carrinho", carrinho);
-            rd = request.getRequestDispatcher("index.jsp");
-            rd.forward(request, response);
-        }
+        
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

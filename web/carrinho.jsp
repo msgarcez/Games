@@ -45,14 +45,14 @@
             <div class="section">
                 <!--   Icon Section   -->
                 <div class="row">
-                    <center><h4 class="light-blue-text">Carrinho de Compra</h4></center>
+                    <center><h4 class="light-blue-text">Carrinho de Compras</h4></center>
                     <%
                         List<ProdutoBean> produto = (List<ProdutoBean>) session.getAttribute("carrinho");
                         for (ProdutoBean pr : produto) {
                     %>
                     <div class="col s3">
                         <div class="card z-depth-3">
-                            <form method="post" action="CategoriaServlet?acao=adicionar_carrinho&id=<%=pr.getId()%>">
+                            <form method="post" action="CategoriaServlet?acao=adicionar_venda&id=<%=pr.getId()%>">
                                 <div class="card-content">
                                     <div class="divider"></div>
                                     <img src="img/<%=pr.getImg()%>" width="200" height="200" />

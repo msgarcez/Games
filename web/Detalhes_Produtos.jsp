@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="col s12 m4">
-                        <form method="post" action="CategoriaServlet?acao=adicionar_carrinho&id=<%=pr.getId()%>">
+                        <form method="post" action="ProdutoServlet?acao=adicionar_carrinho&id=<%=pr.getId()%>">
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input name="nome" type="text" class="validate" disabled value="<%=pr.getNome()%>">

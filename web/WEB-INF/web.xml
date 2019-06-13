@@ -12,6 +12,10 @@
         <servlet-name>CategoriaServlet</servlet-name>
         <servlet-class>controller.CategoriaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VendaServlet</servlet-name>
+        <servlet-class>controller.VendaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/UsuarioServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>CategoriaServlet</servlet-name>
         <url-pattern>/CategoriaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VendaServlet</servlet-name>
+        <url-pattern>/VendaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

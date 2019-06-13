@@ -8,6 +8,7 @@ package controller;
 import dao.ProdutoDAO;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,6 +39,7 @@ public class ProdutoServlet extends HttpServlet {
             throws ServletException, IOException, SQLException {
         String acao = request.getParameter("acao");
         ProdutoDAO pdao = new ProdutoDAO();
+        ProdutoBean pbean = new ProdutoBean();
         RequestDispatcher rd = null;
         HttpSession session = request.getSession();
         if (acao.equalsIgnoreCase("produto")) {
@@ -62,6 +64,23 @@ public class ProdutoServlet extends HttpServlet {
             ProdutoBean produto = pdao.selecionaPorId(id);
             session.setAttribute("produto", produto);
             rd = request.getRequestDispatcher("Detalhes_Produtos.jsp");
+            rd.forward(request, response);
+        }
+        if(acao.equalsIgnoreCase("adicionar_carrinho")){
+            int id = Integer.parseInt(request.getParameter("id"));
+            int quantidade = Integer.parseInt(request.getParameter("quantidade"));
+            pbean = pdao.selecionaPorId(id);
+            List<ProdutoBean> carrinho = new ArrayList<ProdutoBean>();
+            if(session.getAttribute("carrinho") != null){
+                List<ProdutoBean> produtos = (List<ProdutoBean>) session.getAttribute("carrinho");
+                for (ProdutoBean p : produtos) {
+                    carrinho.add(p);
+                }
+            }
+            pbean.setQuantidade(quantidade);
+            carrinho.add(pbean);
+            session.setAttribute("carrinho", carrinho);
+            rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
     }

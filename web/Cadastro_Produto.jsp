@@ -44,9 +44,12 @@
                                 <input name="preco" type="text" class="validate">
                                 <label for="preco">Preço</label>
                             </div>
+                            
                             <div class="input-field col s12">
-                                <input name="categoria" type="text" class="validate">
-                                <label for="categoria">Categoria</label>
+                                <ul id="dropdown2" class="dropdown-content">
+                                    
+                                </ul>
+                                 <a class="btn dropdown-trigger" href="#!" data-target="dropdown2">Categoria<i class="material-icons right">arrow_drop_down</i></a>
                             </div>
                             <div class="input-field col s12">
                                 <input name="especificacao" type="text" class="validate">

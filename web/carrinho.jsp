@@ -52,7 +52,7 @@
                     %>
                     <div class="col s3">
                         <div class="card z-depth-3">
-                            <form method="post" action="CategoriaServlet?acao=adicionar_venda&id=<%=pr.getId()%>">
+                            <form method="post" action="VendaServlet?acao=adicionar_venda&id=<%=pr.getId()%>">
                                 <div class="card-content">
                                     <div class="divider"></div>
                                     <img src="img/<%=pr.getImg()%>" width="200" height="200" />

@@ -16,6 +16,10 @@
         <servlet-name>VendaServlet</servlet-name>
         <servlet-class>controller.VendaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CartaoServlet</servlet-name>
+        <servlet-class>controller.CartaoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/UsuarioServlet</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>VendaServlet</servlet-name>
         <url-pattern>/VendaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartaoServlet</servlet-name>
+        <url-pattern>/CartaoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

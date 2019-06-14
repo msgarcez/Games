@@ -56,7 +56,7 @@
                                         List<CategoriaBean> categorias = cdao.listarCategoriaCombo();
                                         for (CategoriaBean categoria : categorias) {
                                     %>
-                                    <option value="<%=categoria.getId()%>"><%=categoria.getNome()%>s</option>
+                                    <option value="<%=categoria.getId()%>"><%=categoria.getNome()%></option>
                                     <%
                                         }
                                     %>

@@ -21,7 +21,7 @@
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container"><a href="index.jsp">Bem Vindo</a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="Logar.jsp">Login</a></li>
+                    <li><a href="administrativa.jsp">Voltar</a></li>
                 </ul>
             </div>
         </nav>
@@ -44,12 +44,14 @@
                                 <input name="preco" type="text" class="validate">
                                 <label for="preco">Preço</label>
                             </div>
-                            
+
                             <div class="input-field col s12">
                                 <ul id="dropdown2" class="dropdown-content">
-                                    
+                                    <li><a href="#!">one<span class="badge">1</span></a></li>
+                                    <li><a href="#!">two<span class="new badge">1</span></a></li>
+                                    <li><a href="#!">three</a></li>
                                 </ul>
-                                 <a class="btn dropdown-trigger" href="#!" data-target="dropdown2">Categoria<i class="material-icons right">arrow_drop_down</i></a>
+                                <a class="btn dropdown-trigger" href="#!" data-target="dropdown2">Categoria<i class="material-icons right">arrow_drop_down</i></a>
                             </div>
                             <div class="input-field col s12">
                                 <input name="especificacao" type="text" class="validate">
@@ -73,4 +75,3 @@
         </div>
     </body>
 </html>
-    

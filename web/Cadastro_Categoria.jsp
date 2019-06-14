@@ -21,7 +21,7 @@
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container"><a href="index.jsp">Bem Vindo</a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="Logar.jsp">Login</a></li>
+                    <li><a href="administrativa.jsp">Voltar</a></li>
                 </ul>
             </div>
         </nav>

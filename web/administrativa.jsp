@@ -45,7 +45,7 @@ Author     : danie
                                     <a href="Altera_Categoria.jsp" class="light-blue-text">Alterar Categorias</a>
                                 </div>
                                 <div class="collapsible-body light-blue lighten-5 light-blue-text">
-                                    <a href="#!" class="light-blue-text">Excluir Categorias</a>
+                                    <a href="Excluir_Categoria.jsp" class="light-blue-text">Excluir Categorias</a>
                                 </div>
                             </li>
                             <li>

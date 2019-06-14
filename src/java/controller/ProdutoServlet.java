@@ -89,6 +89,25 @@ public class ProdutoServlet extends HttpServlet {
             rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
+        if (acao.equalsIgnoreCase("Editar_Produto")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            ProdutoBean produto = pdao.selecionaPorId(id);
+            session.setAttribute("produto", produto);
+            rd = request.getRequestDispatcher("Editar_Produto.jsp");
+            rd.forward(request, response);
+        }
+        if(acao.equalsIgnoreCase("editar")){
+            int id = Integer.parseInt(request.getParameter("id"));
+            pbean.setId(id);
+            pbean.setNome(request.getParameter("nome"));
+            pbean.setPreco(Double.parseDouble(request.getParameter("preco")));
+            pbean.setId_categoria(Integer.parseInt(request.getParameter("categoria")));
+            pbean.setEspecificacao(request.getParameter("especificacao"));
+            pbean.setEstoque(Integer.parseInt(request.getParameter("estoque")));
+            pdao.alterar(pbean);
+            rd = request.getRequestDispatcher("administrativa.jsp");
+            rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

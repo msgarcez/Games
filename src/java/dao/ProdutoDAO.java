@@ -119,4 +119,21 @@ public class ProdutoDAO {
             return null;
         }
     }
+    
+     public void alterar(ProdutoBean produto) {
+        try {
+            PreparedStatement stmt = conexao.prepareStatement("update produto set nome=?, preco=?, categoria=?, especificacao=?, estoque=? where id=?");
+            stmt.setString(1, produto.getNome());
+            stmt.setDouble(2, produto.getPreco());
+            stmt.setInt(3, produto.getId_categoria());
+            stmt.setString(4, produto.getEspecificacao());
+            stmt.setInt(5, produto.getEstoque());
+            stmt.setInt(6, produto.getId());
+            stmt.executeUpdate();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
 }

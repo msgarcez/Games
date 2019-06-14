@@ -4,6 +4,9 @@
     Author     : danie
 --%>
 
+<%@page import="model.CategoriaBean"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.CategoriaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -46,12 +49,18 @@
                             </div>
 
                             <div class="input-field col s12">
-                                <ul id="dropdown2" class="dropdown-content">
-                                    <li><a href="#!">one<span class="badge">1</span></a></li>
-                                    <li><a href="#!">two<span class="new badge">1</span></a></li>
-                                    <li><a href="#!">three</a></li>
-                                </ul>
-                                <a class="btn dropdown-trigger" href="#!" data-target="dropdown2">Categoria<i class="material-icons right">arrow_drop_down</i></a>
+                                <select name="categoria">
+                                    <option value="" disabled selected>Categoria</option>
+                                    <%
+                                        CategoriaDAO cdao = new CategoriaDAO();
+                                        List<CategoriaBean> categorias = cdao.listarCategoriaCombo();
+                                        for (CategoriaBean categoria : categorias) {
+                                    %>
+                                    <option value="<%=categoria.getId()%>"><%=categoria.getNome()%>s</option>
+                                    <%
+                                        }
+                                    %>
+                                </select>
                             </div>
                             <div class="input-field col s12">
                                 <input name="especificacao" type="text" class="validate">
@@ -72,5 +81,8 @@
                 </div>
             </div><br><br>
         </div>
+        <script>
+            M.AutoInit();
+        </script>
     </body>
 </html>

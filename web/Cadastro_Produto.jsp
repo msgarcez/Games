@@ -4,6 +4,9 @@
     Author     : danie
 --%>
 
+<%@page import="model.CategoriaBean"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.CategoriaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,9 +16,10 @@
         <title>Center Games</title>
         <!-- CSS  -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="css/materialize.css" type="text/css" rel="stylesheet"/>
-        <link href="css/style.css" type="text/css" rel="stylesheet"/>
-        <script src="js/materialize.js" type="text/javascript"></script>
+        <link href="css/materialize.css" type="text/css" rel="stylesheet">
+        <link href="css/style.css" type="text/css" rel="stylesheet">
+        <script src="./js/materialize.min.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">
@@ -44,12 +48,19 @@
                                 <input name="preco" type="text" class="validate">
                                 <label for="preco">Preço</label>
                             </div>
-                            
                             <div class="input-field col s12">
-                                <ul id="dropdown2" class="dropdown-content">
-                                    
-                                </ul>
-                                 <a class="btn dropdown-trigger" href="#!" data-target="dropdown2">Categoria<i class="material-icons right">arrow_drop_down</i></a>
+                                <select name="categoria">
+                                    <option value="" disabled selected>Categoria</option>
+                                    <%
+                                        CategoriaDAO cdao = new CategoriaDAO();
+                                        List<CategoriaBean> categorias = cdao.listarCategoriaCombo();
+                                        for (CategoriaBean categoria : categorias) {
+                                    %>
+                                    <option value="<%=categoria.getId()%>"><%=categoria.getNome()%></option>
+                                    <%
+                                        }
+                                    %>
+                                </select>
                             </div>
                             <div class="input-field col s12">
                                 <input name="especificacao" type="text" class="validate">
@@ -71,6 +82,11 @@
                 </div>
             </div><br><br>
         </div>
+        <script>
+            $(document).ready(function () {
+                M.AutoInit();
+            });
+            
+        </script>
     </body>
 </html>
-    

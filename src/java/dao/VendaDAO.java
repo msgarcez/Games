@@ -8,15 +8,15 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import model.CartaoCreditoBean;
+import model.VendaBean;
 
 /**
  *
  * @author danie
  */
-public class CartaoDAO {
+public class VendaDAO {
     private Connection conexao;
-    public CartaoDAO(){
+    public VendaDAO(){
         try {
             this.conexao = ConnectionFactory.getConnection();
         } catch (Exception e) {
@@ -24,15 +24,15 @@ public class CartaoDAO {
         }
     }
     PreparedStatement ps = null;
-    public void inserir(CartaoCreditoBean cartao) {
+    //método para INSERIR um novo cliente
+    public void inserir(VendaBean venda) {
         try {
-            ps = conexao.prepareStatement("insert into cartao_credito (numero, data_validade, nome_cartao, bandeira, vezes, id_usuario) values (?,?,?,?,?,?)");             
-            ps.setString(1, cartao.getNumero());
-            ps.setDate(2, cartao.getData());
-            ps.setString(3, cartao.getNome_cartao());
-            ps.setString(4, cartao.getBandeira());
-            ps.setInt(5, cartao.getVezes());
-            ps.setInt(6, cartao.getId_usuario());
+            ps = conexao.prepareStatement("insert into venda (data, total, id_usuario, id_endereco, id_cartao) values (?,?,?,?,?)");             
+            ps.setDate(1, venda.getDate());
+            ps.setDouble(2, venda.getTotal());
+            ps.setInt(3, venda.getId_usuario());
+            ps.setInt(4, venda.getId_endereco());
+            ps.setInt(5, venda.getId_cartao());
             ps.execute();
             ps.close();
         } catch (SQLException e) {

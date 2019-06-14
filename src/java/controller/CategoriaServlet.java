@@ -65,6 +65,12 @@ public class CategoriaServlet extends HttpServlet {
             rd = request.getRequestDispatcher("Altera_Categoria.jsp");
             rd.forward(request, response);
         }
+        if(acao.equalsIgnoreCase("excluir")){
+            int id = Integer.parseInt(request.getParameter("id"));
+            cdao.excluir(id);
+            rd = request.getRequestDispatcher("administrativa.jsp");
+            rd.forward(request, response);
+        }
         
     }
     

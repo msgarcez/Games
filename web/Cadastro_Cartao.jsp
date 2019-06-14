@@ -37,7 +37,7 @@
                         <h4 class="light-blue-text">Cadastro do Cartão</h4>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input name="numero" type="tel" id="numero" class="validate">
+                                <input name="numero" type="tel" id="numero" class="validate" maxlength="19">
                                 <label for="numero">Número do Cartão</label>
                             </div>
                             <div class="input-field col s12">
@@ -60,6 +60,10 @@
                             <div class="input-field col s12">
                                 <input name="vezes" type="number" class="validate">
                                 <label for="vezes">Número de Vezes</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input name="cvv" type="number" class="validate">
+                                <label for="cvv">CVV</label>
                             </div>
                             <div class="buttons-set form-buttons">
                                 <button class="waves-effect light-blue btn button" type="submit" title="Cadastrar"><span><span>Cadastrar</span></span></button>

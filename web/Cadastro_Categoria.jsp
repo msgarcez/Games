@@ -44,7 +44,7 @@
                             <div class="icon-block">
                             </div>
                             <div class="buttons-set form-buttons">
-                                <a class="waves-effect light-blue btn" href="administrativa.jsp"><small>&laquo; </small>Voltar</a>
+                                
                                 <button class="waves-effect light-blue btn button" type="submit" title="Cadastrar"><span><span>Cadastrar</span></span></button>
                             </div>
                         </div>

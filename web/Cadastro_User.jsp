@@ -21,7 +21,7 @@
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container"><a href="index.jsp">Bem Vindo</a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="Logar.jsp">Login</a></li>
+                    <li><a href="administrativa.jsp">Voltar</a></li>
                 </ul>
             </div>
         </nav>
@@ -53,7 +53,6 @@
                                 <label for="email">E-mail</label>
                             </div>
                             <div class="buttons-set form-buttons">
-                                <a class="waves-effect light-blue btn" href="index.jsp"><small>&laquo; </small>Voltar</a>
                                 <button class="waves-effect light-blue btn button" type="submit" title="Cadastrar"><span><span>Cadastrar</span></span></button>
                             </div>
                         </div>

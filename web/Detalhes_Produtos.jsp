@@ -34,7 +34,7 @@
                     %>
                     <li><a href="Altera_User.jsp"><%=usuario.getNome_usuario()%></a></li>
                     <li><a href="index.jsp">Voltar</a></li>
-                    <li><a href="carrinho.jsp">Carrinho</a></li>
+                    <li><a href="carrinho.jsp"> <i class="material-icons">add_shopping_cart</i></a></li>
                         <%
                             }
                         %>
@@ -94,7 +94,6 @@
                                 } else {
                                 %>
                                 <div class="buttons-set form-buttons">
-                                    <a class="waves-effect light-blue btn" href="index.jsp"><small>&laquo; </small>Voltar</a>
                                     <button class="waves-effect light-blue btn button" type="submit" title="Add Carrinho"><span><span>Add Carrinho</span></span></button>
                                 </div>
                                 <%

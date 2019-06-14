@@ -18,6 +18,7 @@ public class CartaoCreditoBean {
     private String nome_cartao;
     private String bandeira;
     private int vezes;
+    private int cvv;
     //id_usuario referente ao bean UsuarioBean
     private int id_usuario;
 
@@ -79,6 +80,14 @@ public class CartaoCreditoBean {
 
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
+    }
+
+    public int getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(int cvv) {
+        this.cvv = cvv;
     }
     
     

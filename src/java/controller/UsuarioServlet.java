@@ -54,6 +54,7 @@ public class UsuarioServlet extends HttpServlet {
             UsuarioBean user = udao.consultarLogin(usuario);
             if(user.getNome() != null){
                 session.setAttribute("usuario", user);
+                session.setAttribute("id_usuario", user.getId());
                 response.sendRedirect("index.jsp");
             }else{
                 response.sendRedirect("Logar.jsp");

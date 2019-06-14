@@ -5,12 +5,17 @@
  */
 package controller;
 
+import dao.CartaoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.CartaoCreditoBean;
 
 /**
  *
@@ -29,7 +34,22 @@ public class CartaoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String acao = request.getParameter("acao");
+        RequestDispatcher rd = null;
+        HttpSession session = request.getSession();
+        CartaoDAO cdao = new CartaoDAO();
+        CartaoCreditoBean cbean = new CartaoCreditoBean();
+        if(acao.equalsIgnoreCase("inserir")){
+            cbean.setNumero(request.getParameter("numero"));
+            cbean.setData(Date.valueOf(request.getParameter("data_validade")));
+            cbean.setNome_cartao(request.getParameter("nome_cartao"));
+            cbean.setBandeira(request.getParameter("bandeira"));
+            cbean.setVezes(Integer.parseInt(request.getParameter("vezes")));
+            cbean.setId_usuario(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
+            cdao.inserir(cbean);
+            rd= request.getRequestDispatcher("Altera_User.jsp");
+            rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

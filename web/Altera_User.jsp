@@ -4,6 +4,7 @@
     Author     : danie
 --%>
 
+<%@page import="model.CartaoCreditoBean"%>
 <%@page import="java.util.List"%>
 <%@page import="model.UsuarioBean"%>
 <%@page import="dao.UsuarioDAO"%>
@@ -37,6 +38,7 @@
                     </div>
                     <%
                         UsuarioDAO cdao = new UsuarioDAO();
+                        CartaoCreditoBean ccbean = new CartaoCreditoBean();
                         UsuarioBean cbean = (UsuarioBean) session.getAttribute("usuario");
                         List<UsuarioBean> usuarios = cdao.consultarUsuario_Nome(cbean.getId());
                         for (UsuarioBean user : usuarios) {
@@ -60,8 +62,18 @@
                             </div>
                             <div class="buttons-set form-buttons">
                                 <a class="waves-effect light-blue btn" href="index.jsp"><small>&laquo; </small>Voltar</a>
-                                <button class="waves-effect light-blue btn button" type="submit" title="Alterar"><span><span>Alterar</span></span></button>
-                                <a class="waves-effect light-blue btn" href="Cadastro_Cartao.jsp">Cartao Crédito</a>
+                                 <button class="waves-effect light-blue btn button" type="submit" title="Alterar"><span><span>Alterar</span></span></button>
+                                <%
+                                    if(session.getAttribute("cartao") != null){
+                                %>
+                                <a class="waves-effect light-blue btn" href="index.jsp">Ver Cartão</a>
+                                <%
+                                    }else{
+                                %>
+                                <a class="waves-effect light-blue btn" href="Cadastro_Cartao.jsp">Cadastro Cartão</a>
+                                <%
+                                    }
+                                %>
                                 <br><br>
                             </div>
                         </div>

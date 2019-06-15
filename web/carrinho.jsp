@@ -46,11 +46,14 @@
             <div class="section">
                 <!--   Icon Section   -->
                 <div class="row">
-                    <center><h4 class="light-blue-text">Carrinho de Compras</h4></center>
                     <%
-                        List<ProdutoBean> produto = (List<ProdutoBean>) session.getAttribute("carrinho");
-                        for (ProdutoBean pr : produto) {
+                        if (session.getAttribute("carrinho") != null) {
                     %>
+                    <center><h4 class="light-blue-text">Carrinho de Compras</h4></center>
+                        <%
+                            List<ProdutoBean> produto = (List<ProdutoBean>) session.getAttribute("carrinho");
+                            for (ProdutoBean pr : produto) {
+                        %>
                     <div class="col s3">
                         <div class="card z-depth-3">
                             <form method="post" action="VendaServlet?acao=adicionar_venda&id=<%=pr.getId()%>">
@@ -58,7 +61,7 @@
                                     <div class="divider"></div>
                                     <img src="img/<%=pr.getImg()%>" width="200" height="200" />
                                     <h6 class="black-text"><%=pr.getNome()%></h6>
-                                    <h6 class="black-text">Preço: <%=(pr.getPreco()* pr.getQuantidade()) %></h6>
+                                    <h6 class="black-text">Preço: <%=(pr.getPreco() * pr.getQuantidade())%></h6>
                                     <h6 class="black-text">Plataforma: <%=pr.getNome_categoria()%></h6>
                                     <h6 class="black-text">Categoria: <%=pr.getEspecificacao()%></h6>
                                     <small class="black-text">Estoque: <%=pr.getEstoque()%></small>
@@ -66,6 +69,27 @@
                             </form>
                             <div class="buttons-set form-buttons">
                                 <button class="waves-effect light-blue btn button" type="submit" title="Add Carrinho"><span><span>Comprar</span></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <%
+                        }
+                    } else {
+                    %>
+                    <div class="col s12 m4">
+                        <div class="icon-block">
+                        </div>
+                    </div>
+                    <div class="col s12 m4">
+                        <div class="card">
+                            <div class="card-image center">
+                                <img src="img_icons/cart.png">
+                            </div>
+                            <div class="card-content center">
+                                <p>Carrinho Vazio.</p>
+                            </div>
+                            <div class="card-action center">
+                                <a class="light-blue-text" href="index.jsp">Voltar</a>
                             </div>
                         </div>
                     </div>

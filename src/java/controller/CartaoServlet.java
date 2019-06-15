@@ -48,6 +48,7 @@ public class CartaoServlet extends HttpServlet {
             cbean.setId_usuario(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
             cbean.setCvv(Integer.parseInt(request.getParameter("cvv")));
             cdao.inserir(cbean);
+            session.setAttribute("cartao", cbean);
             rd= request.getRequestDispatcher("Altera_User.jsp");
             rd.forward(request, response);
         }

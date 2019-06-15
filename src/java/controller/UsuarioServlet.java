@@ -37,7 +37,7 @@ public class UsuarioServlet extends HttpServlet {
         UsuarioDAO udao = new UsuarioDAO();
         RequestDispatcher rd = null;
         HttpSession session = request.getSession();
-        if(acao.equalsIgnoreCase("inserir")){
+        if (acao.equalsIgnoreCase("inserir")) {
             UsuarioBean usuario = new UsuarioBean();
             usuario.setNome_usuario(request.getParameter("nome_usuario"));
             usuario.setSenha(request.getParameter("senha"));
@@ -47,22 +47,33 @@ public class UsuarioServlet extends HttpServlet {
             rd = request.getRequestDispatcher("Logar.jsp");
             rd.forward(request, response);
         }
-        if(acao.equalsIgnoreCase("logar")){
+        if (acao.equalsIgnoreCase("logar")) {
             UsuarioBean usuario = new UsuarioBean();
             usuario.setNome_usuario(request.getParameter("nome_usuario"));
             usuario.setSenha(request.getParameter("senha"));
             UsuarioBean user = udao.consultarLogin(usuario);
-            if(user.getNome() != null){
+            if (user.getNome() != null) {
                 session.setAttribute("usuario", user);
                 session.setAttribute("id_usuario", user.getId());
                 response.sendRedirect("index.jsp");
-            }else{
+            } else {
                 response.sendRedirect("Logar.jsp");
             }
         }
-        if(acao.equalsIgnoreCase("sair")){
+        if (acao.equalsIgnoreCase("sair")) {
             session.invalidate();
             rd = request.getRequestDispatcher("index.jsp");
+            rd.forward(request, response);
+        }
+        if (acao.equalsIgnoreCase("inserir_admin")) {
+            UsuarioBean usuario = new UsuarioBean();
+            usuario.setNome_usuario(request.getParameter("nome_usuario"));
+            usuario.setSenha(request.getParameter("senha"));
+            usuario.setNome(request.getParameter("nome"));
+            usuario.setEmail(request.getParameter("email"));
+            usuario.setAdmin(Boolean.parseBoolean(request.getParameter("admin")));
+            udao.inserir_admin(usuario);
+            rd = request.getRequestDispatcher("administrativa.jsp");
             rd.forward(request, response);
         }
     }

@@ -72,12 +72,12 @@ public class ProdutoServlet extends HttpServlet {
             rd = request.getRequestDispatcher("Detalhes_Produtos.jsp");
             rd.forward(request, response);
         }
-        if(acao.equalsIgnoreCase("adicionar_carrinho")){
+        if (acao.equalsIgnoreCase("adicionar_carrinho")) {
             int id = Integer.parseInt(request.getParameter("id"));
             int quantidade = Integer.parseInt(request.getParameter("quantidade"));
             pbean = pdao.selecionaPorId(id);
             List<ProdutoBean> carrinho = new ArrayList<ProdutoBean>();
-            if(session.getAttribute("carrinho") != null){
+            if (session.getAttribute("carrinho") != null) {
                 List<ProdutoBean> produtos = (List<ProdutoBean>) session.getAttribute("carrinho");
                 for (ProdutoBean p : produtos) {
                     carrinho.add(p);
@@ -96,7 +96,7 @@ public class ProdutoServlet extends HttpServlet {
             rd = request.getRequestDispatcher("Editar_Produto.jsp");
             rd.forward(request, response);
         }
-        if(acao.equalsIgnoreCase("editar")){
+        if (acao.equalsIgnoreCase("editar")) {
             int id = Integer.parseInt(request.getParameter("id"));
             pbean.setId(id);
             pbean.setNome(request.getParameter("nome"));
@@ -105,6 +105,12 @@ public class ProdutoServlet extends HttpServlet {
             pbean.setEspecificacao(request.getParameter("especificacao"));
             pbean.setEstoque(Integer.parseInt(request.getParameter("estoque")));
             pdao.alterar(pbean);
+            rd = request.getRequestDispatcher("administrativa.jsp");
+            rd.forward(request, response);
+        }
+        if (acao.equalsIgnoreCase("Excluir_Produto")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            pdao.excluir(id);
             rd = request.getRequestDispatcher("administrativa.jsp");
             rd.forward(request, response);
         }

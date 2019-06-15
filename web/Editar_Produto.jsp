@@ -35,7 +35,7 @@
                             UsuarioBean usuario = new UsuarioBean();
                             usuario = (UsuarioBean) session.getAttribute("usuario");
                     %>
-                    <li><a href="Alterar_Produtos.jsp">Voltar</a></li>
+
                         <%
                             }
                         %>

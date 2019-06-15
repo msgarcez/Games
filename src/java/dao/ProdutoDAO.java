@@ -135,5 +135,15 @@ public class ProdutoDAO {
             throw new RuntimeException(e);
         }
     }
+     public void excluir(int id) {
+        try {
+
+            PreparedStatement ps = conexao.prepareStatement("delete  from produto where id=?");
+            ps.setInt(1, id);
+            ps.execute();
+        } catch (Exception e) {
+            System.out.println("erro:" + e.getMessage());
+        }
+    }
     
 }

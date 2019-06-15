@@ -1,7 +1,7 @@
 <%-- 
-    Document   : Cadastro_User
-    Created on : 01/06/2019, 18:08:46
-    Author     : danie
+    Document   : Cadastro_User_Admin
+    Created on : 14/06/2019, 21:11:21
+    Author     : mathe
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,7 +21,7 @@
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container"><a href="index.jsp">Bem Vindo</a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="Logar.jsp">Voltar</a></li>
+                    <li><a href="administrativa.jsp">Voltar</a></li>
                 </ul>
             </div>
         </nav>
@@ -33,7 +33,7 @@
                         <div class="icon-block">
                         </div>
                     </div>
-                    <form method="post" class="col s12 m4" action="UsuarioServlet?acao=inserir">
+                    <form method="post" class="col s12 m4" action="UsuarioServlet?acao=inserir_admin">
                         <h4 class="light-blue-text">Cadastro Cliente:</h4>
                         <div class="row">
                             <div class="input-field col s12">
@@ -52,6 +52,14 @@
                                 <input name="email" type="email" class="validate">
                                 <label for="email">E-mail</label>
                             </div>
+                            <div class="switch">
+                                <label>
+                                    <input name="admin" type="checkbox" value="1">
+                                    <span class="lever"></span>
+                                    Administrador
+                                </label>
+                            </div>
+                            <br>
                             <div class="buttons-set form-buttons">
                                 <button class="waves-effect light-blue btn button" type="submit" title="Cadastrar"><span><span>Cadastrar</span></span></button>
                             </div>

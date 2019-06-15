@@ -4,6 +4,7 @@
     Author     : danie
 --%>
 
+<%@page import="javax.swing.JOptionPane"%>
 <%@page import="model.UsuarioBean"%>
 <%@page import="java.util.List"%>
 <%@page import="model.ProdutoBean"%>
@@ -74,7 +75,7 @@
                                     <label for="categoria">Plataforma: </label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <input name="quantidade" type="number" class="validate">
+                                    <input name="quantidade" type="number" class="validate" required>
                                     <label for="quantidade">Quantidade: </label>
                                 </div>
                                 <div class="input-field col s12">

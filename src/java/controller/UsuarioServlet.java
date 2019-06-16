@@ -72,6 +72,7 @@ public class UsuarioServlet extends HttpServlet {
             usuario.setNome(request.getParameter("nome"));
             usuario.setEmail(request.getParameter("email"));
             usuario.setAdmin(Boolean.parseBoolean(request.getParameter("admin")));
+            System.out.println(usuario.getAdmin());
             udao.inserir_admin(usuario);
             rd = request.getRequestDispatcher("administrativa.jsp");
             rd.forward(request, response);

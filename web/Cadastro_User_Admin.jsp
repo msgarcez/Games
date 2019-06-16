@@ -54,7 +54,7 @@
                             </div>
                             <div class="switch">
                                 <label>
-                                    <input name="admin" type="checkbox" value="1">
+                                    <input name="admin" type="checkbox" value="true">
                                     <span class="lever"></span>
                                     Administrador
                                 </label>

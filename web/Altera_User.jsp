@@ -26,6 +26,7 @@
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container"><a href="index.jsp">Bem Vindo</a>
                 <ul class="right hide-on-med-and-down">
+                    <li><a href="index.jsp">Voltar</a></li>
                 </ul>
             </div>
         </nav>
@@ -64,8 +65,8 @@
                             <div class="icon-block">
                             </div>
                             <div class="buttons-set form-buttons">
-                                <a class="waves-effect light-blue btn" href="index.jsp"><small>&laquo; </small>Voltar</a>
-                                 <button class="waves-effect light-blue btn button" type="submit" title="Alterar"><span><span>Alterar</span></span></button>
+                                <button class="waves-effect light-blue btn button" type="submit" title="Alterar"><span><span>Alterar Dados</span></span></button><br><br>
+                                <a class="waves-effect light-blue btn" href="Cadastro_Endereco.jsp">Cadastro Endereço</a><br><br>
                                 <%
                                     if(cat > 0){
                                 %>

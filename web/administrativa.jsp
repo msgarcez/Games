@@ -70,7 +70,7 @@ Author     : danie
                                     <a href="Cadastro_User_Admin.jsp" class="light-blue-text">Cadastrar Cliente</a>
                                 </div>
                                 <div class="collapsible-body light-blue lighten-5 light-blue-text">
-                                    <a href="#!" class="light-blue-text">Alterar Cliente</a>
+                                    <a href="Altera_User_Admin.jsp" class="light-blue-text">Alterar Cliente</a>
                                 </div>
                                 <div class="collapsible-body light-blue lighten-5 light-blue-text">
                                     <a href="#!" class="light-blue-text">Excluir Cliente</a>

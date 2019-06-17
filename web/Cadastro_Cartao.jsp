@@ -62,7 +62,7 @@
                                 <label for="vezes">Número de Vezes</label>
                             </div>
                             <div class="input-field col s12">
-                                <input name="cvv" type="number" class="validate">
+                                <input name="cvv" type="number" class="validate" maxlength="3">
                                 <label for="cvv">CVV</label>
                             </div>
                             <div class="buttons-set form-buttons">

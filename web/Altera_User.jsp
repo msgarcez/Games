@@ -4,6 +4,7 @@
     Author     : danie
 --%>
 
+<%@page import="dao.CartaoDAO"%>
 <%@page import="model.CartaoCreditoBean"%>
 <%@page import="java.util.List"%>
 <%@page import="model.UsuarioBean"%>
@@ -37,10 +38,12 @@
                         </div>
                     </div>
                     <%
-                        UsuarioDAO cdao = new UsuarioDAO();
+                        UsuarioDAO udao = new UsuarioDAO();
                         CartaoCreditoBean ccbean = new CartaoCreditoBean();
+                        CartaoDAO cdao = new CartaoDAO();
+                        int cat = cdao.existe(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
                         UsuarioBean cbean = (UsuarioBean) session.getAttribute("usuario");
-                        List<UsuarioBean> usuarios = cdao.consultarUsuario_Nome(cbean.getId());
+                        List<UsuarioBean> usuarios = udao.consultarUsuario_Nome(cbean.getId());
                         for (UsuarioBean user : usuarios) {
                     %>
                     <form method="post" class="col s12 m4" action="CategoriaServlet?acao=alterar_categoria&id=<%=user.getId()%>">
@@ -64,7 +67,7 @@
                                 <a class="waves-effect light-blue btn" href="index.jsp"><small>&laquo; </small>Voltar</a>
                                  <button class="waves-effect light-blue btn button" type="submit" title="Alterar"><span><span>Alterar</span></span></button>
                                 <%
-                                    if(session.getAttribute("cartao") != null){
+                                    if(cat > 0){
                                 %>
                                 <a class="waves-effect light-blue btn" href="index.jsp">Ver Cartão</a>
                                 <%

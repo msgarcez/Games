@@ -5,12 +5,16 @@
  */
 package controller;
 
+import dao.VendaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.VendaBean;
 
 /**
  *
@@ -30,7 +34,13 @@ public class VendaServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String acao = request.getParameter("acao");
-        
+        RequestDispatcher rd = null;
+        HttpSession session = request.getSession();
+        VendaBean vbean = new VendaBean();
+        VendaDAO vdao = new VendaDAO();
+        if(acao.equalsIgnoreCase("adicionar_venda")){
+            
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

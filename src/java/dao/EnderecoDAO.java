@@ -7,6 +7,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.EnderecoBean;
 
@@ -36,6 +37,23 @@ public class EnderecoDAO {
             ps.setString(7, endereco.getCep());
             ps.execute();
             ps.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    //método para verificar se alguem usuario tem endereço cadastrado
+    public int existe(int id){
+        try {
+            ps = conexao.prepareStatement("SELECT count(e.id_usuario) as end FROM endereco e, usuario u WHERE e.id_usuario=u.id and u.id=?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            int count = 0;
+            while(rs.next()){
+                count = rs.getInt("end");
+            }
+            ps.close();
+            rs.close();
+            return count;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

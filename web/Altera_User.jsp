@@ -4,6 +4,7 @@
     Author     : danie
 --%>
 
+<%@page import="dao.EnderecoDAO"%>
 <%@page import="dao.CartaoDAO"%>
 <%@page import="model.CartaoCreditoBean"%>
 <%@page import="java.util.List"%>
@@ -42,6 +43,8 @@
                         UsuarioDAO udao = new UsuarioDAO();
                         CartaoCreditoBean ccbean = new CartaoCreditoBean();
                         CartaoDAO cdao = new CartaoDAO();
+                        EnderecoDAO edao = new EnderecoDAO();
+                        int end = edao.existe(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
                         int cat = cdao.existe(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
                         UsuarioBean cbean = (UsuarioBean) session.getAttribute("usuario");
                         List<UsuarioBean> usuarios = udao.consultarUsuario_Nome(cbean.getId());
@@ -66,7 +69,17 @@
                             </div>
                             <div class="buttons-set form-buttons">
                                 <button class="waves-effect light-blue btn button" type="submit" title="Alterar"><span><span>Alterar Dados</span></span></button><br><br>
+                                <%
+                                    if(end > 0){
+                                %>
+                                <a class="waves-effect light-blue btn" href="Cadastro_Endereco.jsp">Ver Endereço</a><br><br>
+                                <%
+                                    }else{
+                                %>
                                 <a class="waves-effect light-blue btn" href="Cadastro_Endereco.jsp">Cadastro Endereço</a><br><br>
+                                <%
+                                    }
+                                %>
                                 <%
                                     if(cat > 0){
                                 %>

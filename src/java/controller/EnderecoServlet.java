@@ -39,7 +39,17 @@ public class EnderecoServlet extends HttpServlet {
         EnderecoDAO cdao = new EnderecoDAO();
         EnderecoBean cbean = new EnderecoBean();
         if(acao.equalsIgnoreCase("inserir")){
-            
+            cbean.setEndereco(request.getParameter("endereco"));
+            cbean.setNumero(Integer.parseInt(request.getParameter("numero")));
+            cbean.setComplemento(request.getParameter("complemento"));
+            cbean.setPais(request.getParameter("pais"));
+            cbean.setEstado(request.getParameter("estado"));
+            cbean.setCep(request.getParameter("cep"));
+            cbean.setId_usuario(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
+            cdao.inserir(cbean);
+            session.setAttribute("endereco", cbean);
+            rd = request.getRequestDispatcher("Altera_User.jsp");
+            rd.forward(request, response);
         }
     }
 

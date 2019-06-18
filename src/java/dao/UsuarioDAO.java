@@ -76,6 +76,22 @@ public class UsuarioDAO {
             throw new RuntimeException(e);
         }
     }
+    
+    //método para ALTERAR cliente cadastrado em nivel administrador
+    public void alterar_admin(UsuarioBean usuario) {
+        try {
+            ps = conexao.prepareStatement("update usuario set nome_usuario=?, nome=?, email=?, admin=? where id=?");
+            ps.setString(1, usuario.getNome_usuario());
+            ps.setString(2, usuario.getNome());
+            ps.setString(3, usuario.getEmail());
+            ps.setBoolean(4, usuario.getAdmin());
+            ps.setInt(5, usuario.getId());
+            ps.execute();
+            ps.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     //método para EXCLUIR um cliente cadastrado
     public void excluir(int id) {
@@ -102,6 +118,7 @@ public class UsuarioDAO {
                 user.setSenha(rs.getString("senha"));
                 user.setNome(rs.getString("nome"));
                 user.setEmail(rs.getString("email"));
+                user.setAdmin(rs.getBoolean("admin"));
                 ListaUsuario.add(user);
             }
             return ListaUsuario;
@@ -145,6 +162,26 @@ public class UsuarioDAO {
         } catch (Exception e) {
             e.printStackTrace();
             return -1;
+        }
+    }
+
+    public List listarNomeUsuarioCombo() throws SQLException {
+        try {
+            PreparedStatement ps = conexao.prepareStatement("select id, nome_usuario from usuario order by id");
+            ResultSet rs = ps.executeQuery();
+            List<UsuarioBean> listaUsuario = new ArrayList<UsuarioBean>();
+            while (rs.next()) {
+                UsuarioBean usuario = new UsuarioBean();
+                usuario.setId(rs.getInt("id"));
+                usuario.setNome_usuario(rs.getString("nome_usuario"));
+                listaUsuario.add(usuario);
+            }
+            ps.close();
+            rs.close();
+            return listaUsuario;
+        } catch (Exception e) {
+            System.out.println("erro: " + e.getMessage());
+            return null;
         }
     }
 

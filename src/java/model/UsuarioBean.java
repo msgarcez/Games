@@ -78,6 +78,6 @@ public class UsuarioBean {
     public void setAdmin(Boolean admin) {
         this.admin = admin;
     }
-    
+
     
 }

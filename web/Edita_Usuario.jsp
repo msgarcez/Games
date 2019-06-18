@@ -42,26 +42,36 @@
                         UsuarioDAO udao = new UsuarioDAO();
                         CartaoCreditoBean ccbean = new CartaoCreditoBean();
                         CartaoDAO cdao = new CartaoDAO();
-                        int cat = cdao.existe(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
+                       int cat = cdao.existe(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
                         UsuarioBean cbean = (UsuarioBean) session.getAttribute("usuario");
                         List<UsuarioBean> usuarios = udao.consultarUsuario_Nome(cbean.getId());
                         for (UsuarioBean user : usuarios) {
                     %>
-                    <form method="post" class="col s12 m4" action="CategoriaServlet?acao=alterar_categoria&id=<%=user.getId()%>">
-                        <h4 class="light-blue-text">Informações do Usuário: <%=user.getNome()%></h4>
+                    <form method="post" class="col s12 m4" action="UsuarioServlet?acao=alterar_usuario_admin&id=<%=user.getId()%>">
+                        <h4 class="light-blue-text">Altere o Usuário: <%=user.getNome()%></h4>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input name="nome_usuario" type="text" class="validate" disabled value="<%=user.getNome_usuario()%>">
+                                <input name="nome_usuario" type="text" class="validate" value="<%=user.getNome_usuario()%>">
                                 <label for="nome_usuario">Nome do Usuário</label>
                             </div>
                             <div class="input-field col s12">
-                                <input name="nome" type="text" class="validate" disabled value="<%=user.getNome()%>">
+                                <input name="nome" type="text" class="validate" value="<%=user.getNome()%>">
                                 <label for="nome">Nome</label>
                             </div>
                             <div class="input-field col s12">
-                                <input name="email" type="text" class="validate" disabled value="<%=user.getEmail()%>">
+                                <input name="email" type="text" class="validate" value="<%=user.getEmail()%>">
                                 <label for="email">Email</label>
                             </div>
+
+                            <div class="switch">
+                                <label>
+                                    <input name="admin" type="checkbox" <%=user.getAdmin()==true?"checked='checked'":""%> value="true">
+                                    <span class="lever"></span>
+                                    Administrador
+                                </label>
+                            </div>
+                                <br><br>
+
                             <div class="icon-block">
                             </div>
                             <div class="buttons-set form-buttons">

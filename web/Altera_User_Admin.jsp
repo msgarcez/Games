@@ -45,11 +45,11 @@
                                 <div class="collapsible-header light-blue white-text">Selecione um Usuario</div>
                                 <%
                                     UsuarioDAO udao = new UsuarioDAO();
-                                    List<UsuarioBean> usuarios = udao.listarUsuarioCombo();
+                                    List<UsuarioBean> usuarios = udao.listarNomeUsuarioCombo();
                                     for (UsuarioBean usuario : usuarios) {
                                 %>
                                 <div class="collapsible-body light-blue lighten-5 light-blue-text">
-                                    <a href="UsuarioServlet?acao=editar&id=<%=usuario.getId()%>" class="light-blue-text">Id: <%=usuario.getId()%><br> Nome: <%=usuario.getNome()%></a>
+                                    <a href="UsuarioServlet?acao=editar&id=<%=usuario.getId()%>" class="light-blue-text">Id: <%=usuario.getId()%><br> Nome: <%=usuario.getNome_usuario()%></a>
                                 </div>
                                 <%
                                     }

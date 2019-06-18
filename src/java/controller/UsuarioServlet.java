@@ -85,6 +85,19 @@ public class UsuarioServlet extends HttpServlet {
             rd = request.getRequestDispatcher("Edita_Usuario.jsp");
             rd.forward(request, response);
         }
+        if (acao.equalsIgnoreCase("alterar_usuario_admin")) {
+            UsuarioBean usuario = new UsuarioBean();
+            int id = Integer.parseInt(request.getParameter("id"));
+            //nome_usuario=?, nome=?, email=?, admin=?
+            usuario.setId(id);
+            usuario.setNome_usuario(request.getParameter("nome_usuario"));
+            usuario.setNome(request.getParameter("nome"));
+            usuario.setEmail(request.getParameter("email"));
+            usuario.setAdmin(Boolean.parseBoolean(request.getParameter("admin")));
+            udao.alterar_admin(usuario);
+            rd = request.getRequestDispatcher("Edita_Usuario.jsp");
+            rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -69,6 +69,7 @@
                             </form>
                             <div class="buttons-set form-buttons">
                                 <button class="waves-effect light-blue btn button" type="submit" title="Add Carrinho"><span><span>Comprar</span></span></button>
+                                <a href="ProdutoServlet?acao=remover_carrinho&id=<%=pr.getId()%>" class="waves-effect light-blue btn button">Remover</a>
                             </div>
                         </div>
                     </div>

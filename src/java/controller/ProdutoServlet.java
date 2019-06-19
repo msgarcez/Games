@@ -89,6 +89,19 @@ public class ProdutoServlet extends HttpServlet {
             rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
+        if (acao.equalsIgnoreCase("remover_carrinho")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            List<ProdutoBean> carrinho = new ArrayList<ProdutoBean>();
+            List<ProdutoBean> produtos = (List<ProdutoBean>) session.getAttribute("carrinho");
+            for (ProdutoBean p : produtos) {
+                if (p.getId() != id) {
+                    carrinho.add(p);
+                }
+            }
+            session.setAttribute("carrinho", carrinho);
+            rd = request.getRequestDispatcher("carrinho.jsp");
+            rd.forward(request, response);
+        }
         if (acao.equalsIgnoreCase("Editar_Produto")) {
             int id = Integer.parseInt(request.getParameter("id"));
             ProdutoBean produto = pdao.selecionaPorId(id);

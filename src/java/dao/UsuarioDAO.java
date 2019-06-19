@@ -76,16 +76,17 @@ public class UsuarioDAO {
             throw new RuntimeException(e);
         }
     }
-    
+
     //método para ALTERAR cliente cadastrado em nivel administrador
     public void alterar_admin(UsuarioBean usuario) {
         try {
-            ps = conexao.prepareStatement("update usuario set nome_usuario=?, nome=?, email=?, admin=? where id=?");
+            ps = conexao.prepareStatement("update usuario set nome_usuario=?, senha=?, nome=?, email=?, admin=? where id=?");
             ps.setString(1, usuario.getNome_usuario());
-            ps.setString(2, usuario.getNome());
-            ps.setString(3, usuario.getEmail());
-            ps.setBoolean(4, usuario.getAdmin());
-            ps.setInt(5, usuario.getId());
+            ps.setString(2, usuario.getSenha());
+            ps.setString(3, usuario.getNome());
+            ps.setString(4, usuario.getEmail());
+            ps.setBoolean(5, usuario.getAdmin());
+            ps.setInt(6, usuario.getId());
             ps.execute();
             ps.close();
         } catch (SQLException e) {

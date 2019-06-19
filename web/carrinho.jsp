@@ -56,7 +56,7 @@
                         %>
                     <div class="col s3">
                         <div class="card z-depth-3">
-                            <form method="post" action="VendaServlet?acao=adicionar_venda&id=<%=pr.getId()%>">
+                            <form method="post" action="VendaServlet?acao=adicionar_venda&id=<%=pr.getId()%>&quantidade=<%=pr.getQuantidade()%>">
                                 <div class="card-content">
                                     <div class="divider"></div>
                                     <img src="img/<%=pr.getImg()%>" width="200" height="200" />
@@ -66,11 +66,12 @@
                                     <h6 class="black-text">Categoria: <%=pr.getEspecificacao()%></h6>
                                     <small class="black-text">Estoque: <%=pr.getEstoque()%></small>
                                 </div>
+                                <div class="buttons-set form-buttons">
+                                    <button class="waves-effect light-blue btn button" type="submit" title="Add Carrinho"><span><span>Comprar</span></span></button>
+                                    <a href="ProdutoServlet?acao=remover_carrinho&id=<%=pr.getId()%>" class="waves-effect light-blue btn button">Remover</a>
+                                </div>  
                             </form>
-                            <div class="buttons-set form-buttons">
-                                <button class="waves-effect light-blue btn button" type="submit" title="Add Carrinho"><span><span>Comprar</span></span></button>
-                                <a href="ProdutoServlet?acao=remover_carrinho&id=<%=pr.getId()%>" class="waves-effect light-blue btn button">Remover</a>
-                            </div>
+
                         </div>
                     </div>
                     <%

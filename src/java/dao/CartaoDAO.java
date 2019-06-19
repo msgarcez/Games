@@ -41,6 +41,20 @@ public class CartaoDAO {
             throw new RuntimeException(e);
         }
     }
+    public CartaoCreditoBean selecionaEnderecoPorId(int id){
+        try {
+            ps = conexao.prepareStatement("Select id from cartao_credito where id_usuario=?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+                CartaoCreditoBean produto = new CartaoCreditoBean();
+            while(rs.next()){
+                produto.setId(rs.getInt("id"));          
+            }
+            return produto;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     //método para verificar se alguem usuario tem cartão de crédito
     public int existe(int id){
         try {

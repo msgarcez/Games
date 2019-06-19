@@ -13,7 +13,7 @@ import java.sql.Date;
  */
 public class VendaBean {
     private int id;
-    private Date date;
+    private String date;
     private double total;
     //id_usuario referente ao bean UsuarioBean
     private int id_usuario;
@@ -34,11 +34,11 @@ public class VendaBean {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

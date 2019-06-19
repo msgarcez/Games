@@ -68,7 +68,13 @@
                             <div class="icon-block">
                             </div>
                             <div class="buttons-set form-buttons">
+                                <%
+                                    if(!cbean.getAdmin()){
+                                %>
                                 <button class="waves-effect light-blue btn button" type="submit" title="Alterar"><span><span>Alterar Dados</span></span></button><br><br>
+                                <%
+                                    }
+                                %>
                                 <%
                                     if(end > 0){
                                 %>

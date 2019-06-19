@@ -81,7 +81,7 @@ public class UsuarioServlet extends HttpServlet {
             UsuarioBean usuario = new UsuarioBean();
             int id = Integer.parseInt(request.getParameter("id"));
             usuario = udao.selecionaPorId(id);
-            session.setAttribute("usuario", usuario);
+            session.setAttribute("usuario_edit", usuario);
             rd = request.getRequestDispatcher("Edita_Usuario.jsp");
             rd.forward(request, response);
         }
@@ -91,11 +91,12 @@ public class UsuarioServlet extends HttpServlet {
             //nome_usuario=?, nome=?, email=?, admin=?
             usuario.setId(id);
             usuario.setNome_usuario(request.getParameter("nome_usuario"));
+            usuario.setSenha(request.getParameter("senha"));
             usuario.setNome(request.getParameter("nome"));
             usuario.setEmail(request.getParameter("email"));
             usuario.setAdmin(Boolean.parseBoolean(request.getParameter("admin")));
             udao.alterar_admin(usuario);
-            rd = request.getRequestDispatcher("Edita_Usuario.jsp");
+            rd = request.getRequestDispatcher("administrativa.jsp");
             rd.forward(request, response);
         }
     }

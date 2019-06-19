@@ -42,8 +42,8 @@
                         UsuarioDAO udao = new UsuarioDAO();
                         CartaoCreditoBean ccbean = new CartaoCreditoBean();
                         CartaoDAO cdao = new CartaoDAO();
-                       int cat = cdao.existe(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
-                        UsuarioBean cbean = (UsuarioBean) session.getAttribute("usuario");
+                        int cat = cdao.existe(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
+                        UsuarioBean cbean = (UsuarioBean) session.getAttribute("usuario_edit");
                         List<UsuarioBean> usuarios = udao.consultarUsuario_Nome(cbean.getId());
                         for (UsuarioBean user : usuarios) {
                     %>
@@ -53,6 +53,10 @@
                             <div class="input-field col s12">
                                 <input name="nome_usuario" type="text" class="validate" value="<%=user.getNome_usuario()%>">
                                 <label for="nome_usuario">Nome do Usuário</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input name="senha" type="text" class="validate" value="<%=user.getSenha()%>">
+                                <label for="senha">Nome do Usuário</label>
                             </div>
                             <div class="input-field col s12">
                                 <input name="nome" type="text" class="validate" value="<%=user.getNome()%>">
@@ -65,12 +69,12 @@
 
                             <div class="switch">
                                 <label>
-                                    <input name="admin" type="checkbox" <%=user.getAdmin()==true?"checked='checked'":""%> value="true">
+                                    <input name="admin" type="checkbox" <%=user.getAdmin() == true ? "checked='checked'" : ""%> value="true">
                                     <span class="lever"></span>
                                     Administrador
                                 </label>
                             </div>
-                                <br><br>
+                            <br><br>
 
                             <div class="icon-block">
                             </div>

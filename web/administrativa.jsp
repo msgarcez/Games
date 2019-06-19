@@ -73,7 +73,7 @@ Author     : danie
                                     <a href="Altera_User_Admin.jsp" class="light-blue-text">Alterar Cliente</a>
                                 </div>
                                 <div class="collapsible-body light-blue lighten-5 light-blue-text">
-                                    <a href="#!" class="light-blue-text">Excluir Cliente</a>
+                                    <a href="Excluir_Usuario.jsp" class="light-blue-text">Excluir Cliente</a>
                                 </div>
                             </li>
                         </ul>

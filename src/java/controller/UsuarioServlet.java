@@ -99,6 +99,12 @@ public class UsuarioServlet extends HttpServlet {
             rd = request.getRequestDispatcher("administrativa.jsp");
             rd.forward(request, response);
         }
+        if (acao.equalsIgnoreCase("excluir")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            udao.excluir(id);
+            rd = request.getRequestDispatcher("administrativa.jsp");
+            rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

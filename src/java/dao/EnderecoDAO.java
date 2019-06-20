@@ -41,6 +41,20 @@ public class EnderecoDAO {
             throw new RuntimeException(e);
         }
     }
+    public EnderecoBean selecionaEnderecoPorId(int id){
+        try {
+            ps = conexao.prepareStatement("Select id from endereco where id_usuario=?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+                EnderecoBean produto = new EnderecoBean();
+            while(rs.next()){
+                produto.setId(rs.getInt("id"));          
+            }
+            return produto;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     //método para verificar se alguem usuario tem endereço cadastrado
     public int existe(int id){
         try {

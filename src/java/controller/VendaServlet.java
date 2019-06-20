@@ -5,15 +5,23 @@
  */
 package controller;
 
+import dao.CartaoDAO;
+import dao.EnderecoDAO;
+import dao.ProdutoDAO;
 import dao.VendaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.CartaoCreditoBean;
+import model.EnderecoBean;
+import model.ProdutoBean;
 import model.VendaBean;
 
 /**
@@ -35,11 +43,38 @@ public class VendaServlet extends HttpServlet {
             throws ServletException, IOException {
         String acao = request.getParameter("acao");
         RequestDispatcher rd = null;
+        ProdutoDAO pdao = new ProdutoDAO();
+        ProdutoBean pbean = new ProdutoBean();
         HttpSession session = request.getSession();
         VendaBean vbean = new VendaBean();
         VendaDAO vdao = new VendaDAO();
-        if(acao.equalsIgnoreCase("adicionar_venda")){
+        EnderecoDAO edao = new EnderecoDAO();
+        EnderecoBean ebean = new EnderecoBean();
+        CartaoCreditoBean cbean = new CartaoCreditoBean();
+        CartaoDAO cdao = new CartaoDAO();
+        Date data = new Date();
+        SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
+        if (acao.equalsIgnoreCase("adicionar_venda")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            int quantidade = Integer.parseInt(request.getParameter("quantidade"));
+            pbean = pdao.selecionaPorId(id);
+            double total = pbean.getPreco() * quantidade;
+            System.out.println(pbean.getPreco() +" "+pbean.getQuantidade());
+            ebean = edao.selecionaEnderecoPorId(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
+            int id_endereco = ebean.getId();
             
+            cbean = cdao.selecionaEnderecoPorId(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
+            int id_cartao = cbean.getId();
+            
+            vbean.setTotal(total);
+            vbean.setId_usuario(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
+            vbean.setId_endereco(id_endereco);
+            vbean.setId_cartao(id_cartao);
+            vbean.setDate(formatador.format(data));
+            vdao.inserir(vbean);
+            session.setAttribute("venda", vbean);
+            rd = request.getRequestDispatcher("index.jsp");
+            rd.forward(request, response);
         }
     }
 

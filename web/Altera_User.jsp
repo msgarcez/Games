@@ -78,7 +78,7 @@
                                 <%
                                     if(end > 0){
                                 %>
-                                <a class="waves-effect light-blue btn" href="Cadastro_Endereco.jsp">Ver Endereço</a><br><br>
+                                <a class="waves-effect light-blue btn" href="Ver_Endereco.jsp">Ver Endereço</a><br><br>
                                 <%
                                     }else{
                                 %>
@@ -89,7 +89,7 @@
                                 <%
                                     if(cat > 0){
                                 %>
-                                <a class="waves-effect light-blue btn" href="index.jsp">Ver Cartão</a>
+                                <a class="waves-effect light-blue btn" href="Ver_Cartao.jsp">Ver Cartão</a>
                                 <%
                                     }else{
                                 %>

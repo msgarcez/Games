@@ -6,6 +6,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import model.VendaBean;
@@ -28,7 +29,7 @@ public class VendaDAO {
     public void inserir(VendaBean venda) {
         try {
             ps = conexao.prepareStatement("insert into venda (data, total, id_usuario, id_endereco, id_cartao) values (?,?,?,?,?)");             
-            ps.setDate(1, venda.getDate());
+            ps.setDate(1, Date.valueOf(venda.getDate()));
             ps.setDouble(2, venda.getTotal());
             ps.setInt(3, venda.getId_usuario());
             ps.setInt(4, venda.getId_endereco());

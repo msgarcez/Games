@@ -49,7 +49,17 @@ public class CartaoServlet extends HttpServlet {
             cbean.setCvv(Integer.parseInt(request.getParameter("cvv")));
             cdao.inserir(cbean);
             session.setAttribute("cartao", cbean);
+            session.setAttribute("id_cartao", cbean.getId());
             rd= request.getRequestDispatcher("Altera_User.jsp");
+            rd.forward(request, response);
+        }
+        if(acao.equalsIgnoreCase("editar_cartao")){
+            int id = Integer.parseInt(request.getParameter("id"));
+        }
+        if(acao.equalsIgnoreCase("remover_cartao")){
+            int id = Integer.parseInt(request.getParameter("id"));
+            cdao.excluir(id);
+            rd = request.getRequestDispatcher("Ver_Cartao.jsp");
             rd.forward(request, response);
         }
     }

@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.CartaoCreditoBean;
 
 /**
@@ -41,6 +43,45 @@ public class CartaoDAO {
             throw new RuntimeException(e);
         }
     }
+    //método para ALTERAR cliente cadastrado
+    public void alterar(CartaoCreditoBean cartao) {
+        try {
+            ps = conexao.prepareStatement("update cartao_credito set numero=?, data_validade=?, nome_cartao=?, bandeira=?, vezes=? where id=?");
+            ps.setString(1, cartao.getNumero());
+            ps.setDate(2, cartao.getData());
+            ps.setString(3, cartao.getNome_cartao());
+            ps.setString(4, cartao.getBandeira());
+            ps.setInt(5, cartao.getVezes());
+            ps.setInt(6, cartao.getId());
+            ps.execute();
+            ps.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public List selecionaCartaoId(int id){
+        try {
+            ps = conexao.prepareStatement("Select c.id, c.numero, c.data_validade, c.nome_cartao , c.bandeira, c.vezes, c.cvv, c.id_usuario from cartao_credito c, usuario u where c.id_usuario = u.id and u.id=?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            List<CartaoCreditoBean> listaCartao = new ArrayList<CartaoCreditoBean>();
+            while(rs.next()){
+                CartaoCreditoBean cbean = new CartaoCreditoBean();
+                cbean.setId(rs.getInt("id"));
+                cbean.setNumero(rs.getString("numero"));
+                cbean.setData(rs.getDate("data_validade"));
+                cbean.setNome_cartao(rs.getString("nome_cartao"));
+                cbean.setBandeira(rs.getString("bandeira"));
+                cbean.setVezes(rs.getInt("vezes"));
+                cbean.setCvv(rs.getInt("cvv"));
+                cbean.setId_usuario(rs.getInt("id_usuario"));
+                listaCartao.add(cbean);
+            }
+            return listaCartao;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public CartaoCreditoBean selecionaEnderecoPorId(int id){
         try {
             ps = conexao.prepareStatement("Select id from cartao_credito where id_usuario=?");
@@ -68,6 +109,16 @@ public class CartaoDAO {
             ps.close();
             rs.close();
             return count;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    //método para EXCLUIR um cartao cadastrado
+    public void excluir(int id) {
+        try {
+            ps = conexao.prepareStatement("delete  from cartao_credito where id=?");
+            ps.setInt(1, id);
+            ps.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

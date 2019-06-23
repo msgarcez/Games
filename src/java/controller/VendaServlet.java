@@ -7,6 +7,7 @@ package controller;
 
 import dao.CartaoDAO;
 import dao.EnderecoDAO;
+import dao.ItemVendaDAO;
 import dao.ProdutoDAO;
 import dao.VendaDAO;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.CartaoCreditoBean;
 import model.EnderecoBean;
+import model.ItemVendaBean;
 import model.ProdutoBean;
 import model.VendaBean;
 
@@ -45,13 +47,21 @@ public class VendaServlet extends HttpServlet {
         RequestDispatcher rd = null;
         ProdutoDAO pdao = new ProdutoDAO();
         ProdutoBean pbean = new ProdutoBean();
+
+        ItemVendaDAO ivdao = new ItemVendaDAO();
+        ItemVendaBean ibean = new ItemVendaBean();
+
         HttpSession session = request.getSession();
+
         VendaBean vbean = new VendaBean();
         VendaDAO vdao = new VendaDAO();
+
         EnderecoDAO edao = new EnderecoDAO();
         EnderecoBean ebean = new EnderecoBean();
+
         CartaoCreditoBean cbean = new CartaoCreditoBean();
         CartaoDAO cdao = new CartaoDAO();
+
         Date data = new Date();
         SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
         if (acao.equalsIgnoreCase("adicionar_venda")) {
@@ -59,13 +69,13 @@ public class VendaServlet extends HttpServlet {
             int quantidade = Integer.parseInt(request.getParameter("quantidade"));
             pbean = pdao.selecionaPorId(id);
             double total = pbean.getPreco() * quantidade;
-            System.out.println(pbean.getPreco() +" "+pbean.getQuantidade());
+            int est = pbean.getEstoque() - quantidade;
             ebean = edao.selecionaEnderecoPorId(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
             int id_endereco = ebean.getId();
-            
+
             cbean = cdao.selecionaEnderecoPorId(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
             int id_cartao = cbean.getId();
-            
+
             vbean.setTotal(total);
             vbean.setId_usuario(Integer.parseInt(String.valueOf(session.getAttribute("id_usuario"))));
             vbean.setId_endereco(id_endereco);
@@ -73,6 +83,19 @@ public class VendaServlet extends HttpServlet {
             vbean.setDate(formatador.format(data));
             vdao.inserir(vbean);
             session.setAttribute("venda", vbean);
+            session.setAttribute("id_venda", vbean.getId());
+
+            pbean.setEstoque(est);
+            pbean.setId(id);
+            vdao.alterar_estoque(pbean);
+            
+            //inserir item_venda teste
+
+            //ibean.setId_venda(Integer.parseInt(String.valueOf(session.getAttribute("id_venda"))));
+            //ibean.setId_produto(Integer.parseInt(String.valueOf(session.getAttribute("id_produto"))));
+            //ibean.setQuantidade(quantidade);
+            //ivdao.inserir(ibean);
+            
             rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }

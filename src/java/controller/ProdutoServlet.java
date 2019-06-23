@@ -69,6 +69,7 @@ public class ProdutoServlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             ProdutoBean produto = pdao.selecionaPorId(id);
             session.setAttribute("produto", produto);
+            session.setAttribute("id_produto", produto.getId());
             rd = request.getRequestDispatcher("Detalhes_Produtos.jsp");
             rd.forward(request, response);
         }

@@ -19,18 +19,21 @@ import model.ProdutoBean;
  * @author danie
  */
 public class ProdutoDAO {
+
     private Connection conexao;
-    public ProdutoDAO(){
+
+    public ProdutoDAO() {
         try {
             this.conexao = ConnectionFactory.getConnection();
         } catch (Exception e) {
-            System.out.println("Erro: "+e.getMessage());
+            System.out.println("Erro: " + e.getMessage());
         }
     }
-    
+
     PreparedStatement ps = null;
+
     //método para INSERIR um novo produto
-    public void inserir(ProdutoBean produto){
+    public void inserir(ProdutoBean produto) {
         try {
             ps = conexao.prepareStatement("insert into produto (nome, preco, categoria, especificacao, estoque, img) values (?,?,?,?,?,?)");
             ps.setString(1, produto.getNome());
@@ -45,13 +48,14 @@ public class ProdutoDAO {
             throw new RuntimeException(e);
         }
     }
-    public List selecionaProdutoId(int id){
+
+    public List selecionaProdutoId(int id) {
         try {
             ps = conexao.prepareStatement("Select produto.id, produto.nome, produto.preco, categoria.nome as cat, produto.especificacao, produto.estoque, produto.img from produto, categoria where produto.categoria = categoria.id and produto.id=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             List<ProdutoBean> listaProduto = new ArrayList<ProdutoBean>();
-            while(rs.next()){
+            while (rs.next()) {
                 ProdutoBean produto = new ProdutoBean();
                 produto.setId(rs.getInt("id"));
                 produto.setNome(rs.getString("nome"));
@@ -67,60 +71,62 @@ public class ProdutoDAO {
             throw new RuntimeException(e);
         }
     }
-    public ProdutoBean selecionaPorId(int id){
+
+    public ProdutoBean selecionaPorId(int id) {
         try {
             ps = conexao.prepareStatement("Select produto.id, produto.nome, produto.preco, categoria.nome as cat, produto.especificacao, produto.estoque, produto.img from produto, categoria where produto.categoria = categoria.id and produto.id=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-                ProdutoBean produto = new ProdutoBean();
-            while(rs.next()){
+            ProdutoBean produto = new ProdutoBean();
+            while (rs.next()) {
                 produto.setId(rs.getInt("id"));
                 produto.setNome(rs.getString("nome"));
                 produto.setPreco(rs.getDouble("preco"));
                 produto.setNome_categoria(rs.getString("cat"));
                 produto.setEspecificacao(rs.getString("especificacao"));
                 produto.setEstoque(rs.getInt("estoque"));
-                produto.setImg(rs.getString("img"));           
+                produto.setImg(rs.getString("img"));
             }
             return produto;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
     //método para LISTAR todos os cliente cadastrados
-    public List todosProdutos()throws SQLException{
+    public List todosProdutos() throws SQLException {
         try {
             //criar o ps prepared stattment
             PreparedStatement ps = conexao.prepareStatement("Select produto.id, produto.nome, produto.preco, categoria.nome as cat, produto.especificacao, produto.estoque, produto.img from produto, categoria where produto.categoria = categoria.id order by produto.nome");
-             
+
             //cria o result set rs
             ResultSet rs = ps.executeQuery();
             List<ProdutoBean> ListaClientes = new ArrayList<ProdutoBean>();
-            while(rs.next()){
-            //criando um objeto clientebean
-            ProdutoBean produto = new ProdutoBean();
-            CategoriaBean categoria = new CategoriaBean();
-            produto.setId(rs.getInt("id"));
-            produto.setNome(rs.getString("nome"));
-            produto.setPreco(rs.getDouble("preco"));
-            produto.setNome_categoria(rs.getString("cat"));
-            produto.setEspecificacao(rs.getString("especificacao"));
-            produto.setEstoque(rs.getInt("estoque"));
-            produto.setImg(rs.getString("img"));
-            
-            //Adcionar o objeto a lista
-            ListaClientes.add(produto);
+            while (rs.next()) {
+                //criando um objeto clientebean
+                ProdutoBean produto = new ProdutoBean();
+                CategoriaBean categoria = new CategoriaBean();
+                produto.setId(rs.getInt("id"));
+                produto.setNome(rs.getString("nome"));
+                produto.setPreco(rs.getDouble("preco"));
+                produto.setNome_categoria(rs.getString("cat"));
+                produto.setEspecificacao(rs.getString("especificacao"));
+                produto.setEstoque(rs.getInt("estoque"));
+                produto.setImg(rs.getString("img"));
+
+                //Adcionar o objeto a lista
+                ListaClientes.add(produto);
             }
             ps.close();
             rs.close();
             return ListaClientes;
         } catch (Exception e) {
-            System.out.println("erro:" +e.getMessage());
+            System.out.println("erro:" + e.getMessage());
             return null;
         }
     }
-    
-     public void alterar(ProdutoBean produto) {
+
+    public void alterar(ProdutoBean produto) {
         try {
             PreparedStatement stmt = conexao.prepareStatement("update produto set nome=?, preco=?, categoria=?, especificacao=?, estoque=? where id=?");
             stmt.setString(1, produto.getNome());
@@ -135,7 +141,8 @@ public class ProdutoDAO {
             throw new RuntimeException(e);
         }
     }
-     public void excluir(int id) {
+
+    public void excluir(int id) {
         try {
 
             PreparedStatement ps = conexao.prepareStatement("delete  from produto where id=?");
@@ -145,5 +152,5 @@ public class ProdutoDAO {
             System.out.println("erro:" + e.getMessage());
         }
     }
-    
+
 }

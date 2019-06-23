@@ -36,9 +36,14 @@
                     <li><a href="Altera_User.jsp"><%=usuario.getNome_usuario()%></a></li>
                     <li><a href="index.jsp">Voltar</a></li>
                         <%
+                            if (usuario.getAdmin()) {
+
+                        %>
+                    <li><a href="administrativa.jsp">Área administrativa</a></li>
+                        <%                                } else {
+                                }
                             }
                         %>
-
                 </ul>
             </div>
         </nav>
@@ -71,7 +76,6 @@
                                     <a href="ProdutoServlet?acao=remover_carrinho&id=<%=pr.getId()%>" class="waves-effect light-blue btn button">Remover</a>
                                 </div>  
                             </form>
-
                         </div>
                     </div>
                     <%
@@ -98,6 +102,9 @@
                     <%
                         }
                     %>
+                </div>
+                <div class="col s3">
+                    <a href="ProdutoServlet?acao=compra_todos&id=" class="waves-effect light-blue btn button">Comprar Todos</a>
                 </div>
             </div><br><br>
         </div>

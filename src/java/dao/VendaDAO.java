@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import model.ProdutoBean;
 import model.VendaBean;
 
 /**
@@ -36,6 +37,17 @@ public class VendaDAO {
             ps.setInt(5, venda.getId_cartao());
             ps.execute();
             ps.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void alterar_estoque(ProdutoBean produto) {
+        try {
+            PreparedStatement stmt = conexao.prepareStatement("update produto set estoque=? where id=?");
+            stmt.setInt(1, produto.getEstoque());
+            stmt.setInt(2, produto.getId());
+            stmt.executeUpdate();
+            stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -44,6 +44,7 @@ public class UsuarioServlet extends HttpServlet {
             usuario.setNome(request.getParameter("nome"));
             usuario.setEmail(request.getParameter("email"));
             udao.inserir(usuario);
+            session.setAttribute("sucess", "Usuário inserido com sucesso");
             rd = request.getRequestDispatcher("Logar.jsp");
             rd.forward(request, response);
         }
@@ -55,6 +56,7 @@ public class UsuarioServlet extends HttpServlet {
             if (user.getNome() != null) {
                 session.setAttribute("usuario", user);
                 session.setAttribute("id_usuario", user.getId());
+                session.setAttribute("sucess", "Bem Vindo");
                 response.sendRedirect("index.jsp");
             } else {
                 response.sendRedirect("Logar.jsp");

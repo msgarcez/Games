@@ -76,6 +76,17 @@ Author     : danie
                                     <a href="Excluir_Usuario.jsp" class="light-blue-text">Excluir Cliente</a>
                                 </div>
                             </li>
+                            <li>
+                                <div class="collapsible-header light-blue white-text">
+                                    Relatórios
+                                </div>
+                                <div class="collapsible-body light-blue lighten-5 light-blue-text">
+                                    <a href="ProdutosMaisVendidos.jsp" class="light-blue-text">Produtos mais vendidos</a>
+                                </div>
+                                <div class="collapsible-body light-blue lighten-5 light-blue-text">
+                                    <a href="User_Compras.jsp" class="light-blue-text">Usuários que mais compraram</a>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>

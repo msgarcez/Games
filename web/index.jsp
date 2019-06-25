@@ -28,11 +28,11 @@
             <div class="nav-wrapper container">
                 <a href="index.jsp">Bem Vindo</a>
                 <ul class="right hide-on-med-and-down">
-                        <%
-                            if (session.getAttribute("usuario") != null) {
-                                UsuarioBean usuario = new UsuarioBean();
-                                usuario = (UsuarioBean) session.getAttribute("usuario");
-                        %>
+                    <%
+                        if (session.getAttribute("usuario") != null) {
+                            UsuarioBean usuario = new UsuarioBean();
+                            usuario = (UsuarioBean) session.getAttribute("usuario");
+                    %>
                     <li><a href="Altera_User.jsp"><%=usuario.getNome_usuario()%></a></li>
                     <li><a href="UsuarioServlet?acao=sair">Sair</a></li>
                         <%
@@ -40,13 +40,13 @@
                         %>
                     <li><a href="administrativa.jsp">Área administrativa</a></li>
                         <%
-                                }
-                            }else{
+                            }
+                        } else {
                         %>
                     <li><a href="Logar.jsp">Login</a></li>
-                    <%
-                        }
-                    %>
+                        <%
+                            }
+                        %>
                     <li><a href="carrinho.jsp"> <i class="material-icons">add_shopping_cart</i></a></li>
                 </ul>
             </div>
@@ -123,6 +123,5 @@
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="js/materialize.js"></script>
         <script src="js/init.js"></script>
-
     </body>
 </html>

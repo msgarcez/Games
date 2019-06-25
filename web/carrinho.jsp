@@ -78,9 +78,6 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col s3">
-                        <a href="ProdutoServlet?acao=compra_todos&id=" class="waves-effect light-blue btn button">Comprar Todos</a>
-                    </div>
                     <%
                         }
                     } else {

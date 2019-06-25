@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -83,18 +84,20 @@ public class VendaServlet extends HttpServlet {
             vbean.setDate(formatador.format(data));
             vdao.inserir(vbean);
             session.setAttribute("venda", vbean);
-            session.setAttribute("id_venda", vbean.getId());
 
             pbean.setEstoque(est);
             pbean.setId(id);
             vdao.alterar_estoque(pbean);
             
             //inserir item_venda teste
-
-            //ibean.setId_venda(Integer.parseInt(String.valueOf(session.getAttribute("id_venda"))));
-            //ibean.setId_produto(Integer.parseInt(String.valueOf(session.getAttribute("id_produto"))));
-            //ibean.setQuantidade(quantidade);
-            //ivdao.inserir(ibean);
+            List<ProdutoBean> produtos = (List<ProdutoBean>) session.getAttribute("carrinho");
+            for (ProdutoBean produto : produtos){
+                ItemVendaBean ivb = new ItemVendaBean();
+                ivb.setId_produto(produto.getId());
+                ivb.setId_venda(vdao.ulti_insert());
+                ivb.setQuantidade(produto.getQuantidade());
+                ivdao.inserir(ivb);
+            }
             
             rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);

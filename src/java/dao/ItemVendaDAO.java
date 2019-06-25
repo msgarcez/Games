@@ -7,8 +7,12 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.ItemVendaBean;
+import model.ProdutoBean;
 
 /**
  *
@@ -33,6 +37,22 @@ public class ItemVendaDAO {
             ps.setInt(3, venda.getQuantidade());
             ps.execute();
             ps.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public List produtosMaisVendidos(){
+        try {
+            ps = conexao.prepareStatement("SELECT id_produto, SUM(quantidade) quantidade FROM item_venda GROUP BY id_produto ORDER BY quantidade DESC");
+            ResultSet rs = ps.executeQuery();
+            List<ItemVendaBean> listaProdutos = new ArrayList<ItemVendaBean>();
+            while (rs.next()) {
+                ItemVendaBean venda = new ItemVendaBean();
+                venda.setId_produto(rs.getInt("id_produto"));
+                venda.setQuantidade(rs.getInt("quantidade"));
+                listaProdutos.add(venda);
+            }
+            return listaProdutos;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -93,7 +93,23 @@ public class UsuarioDAO {
             throw new RuntimeException(e);
         }
     }
-
+    public List usuariosSemCompras(){
+        try {
+            ps = conexao.prepareStatement("SELECT u.id, u.nome, u.email FROM usuario u LEFT JOIN venda v ON v.id_usuario = u.id WHERE v.id_usuario IS null");
+            ResultSet rs = ps.executeQuery();
+            List<UsuarioBean> ListaUsuario = new ArrayList<UsuarioBean>();
+            while (rs.next()) {
+                UsuarioBean user = new UsuarioBean();
+                user.setId(rs.getInt("id"));
+                user.setNome(rs.getString("nome"));
+                user.setEmail(rs.getString("email"));
+                ListaUsuario.add(user);
+            }
+            return ListaUsuario;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     //método para EXCLUIR um cliente cadastrado
     public void excluir(int id) {
         try {

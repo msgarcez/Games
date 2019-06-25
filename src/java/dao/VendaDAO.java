@@ -8,6 +8,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.ProdutoBean;
 import model.VendaBean;
@@ -48,6 +49,19 @@ public class VendaDAO {
             stmt.setInt(2, produto.getId());
             stmt.executeUpdate();
             stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public int ulti_insert(){
+        try {
+            ps = conexao.prepareStatement("SELECT MAX(id) as id FROM venda; ");
+            ResultSet rs = ps.executeQuery();
+            int id = 0;
+            while (rs.next()) {
+                id = rs.getInt("id");
+            }
+            return id;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
